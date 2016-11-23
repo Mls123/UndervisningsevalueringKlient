@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+//Denne metode er tildels genbrug fra Serveren, da der skal loades lignende config fil, med samme keys til hashing og kryptering så opgaven i form af sikkerhed bliver udfyldt.
+
 /*ConfigLoader anvendes til at hente den unikke config.Json fil, vi har uploadet, hvilket gør f.eks database adgangen uafhægig af hvilken computer den ligger på*/
 public class ConfigLoader {
 

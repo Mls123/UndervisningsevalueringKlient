@@ -12,6 +12,8 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
+
+//Denne klasse er lavet i fællesskab med øvelseslæreren Jesper.
 public class Connection {
 
     //Denne er static så den kan tilgås overalt i klassen.
@@ -25,13 +27,13 @@ public class Connection {
     //her burges responseParser til og give feedback på et callback til serveren
     public void execute(HttpUriRequest uriRequest, final ResponseParser parser){
 
-        // Create a custom response handler
+        // Her laves en custom response handler
         ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 
             public String handleResponse(final HttpResponse response) throws IOException {
                 int status = response.getStatusLine().getStatusCode();
 
-                //Er der en status kode på over 300 er der en fejl på serveren - under 300 er det succes.
+                //Er der en status kode på over 300 er der en fejl på serveren eller klienten - under 300 er det succes.
                 if (status >= 200 && status < 300) {
                     HttpEntity entity = response.getEntity();
                     return entity != null ? EntityUtils.toString(entity) : null;
@@ -47,7 +49,9 @@ public class Connection {
             //her bliver der retuneret noget fra serveren af json
             String json = this.httpClient.execute(uriRequest, responseHandler);
 
-            parser.payload(json);
+            if(json != null){
+                parser.payload(json);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

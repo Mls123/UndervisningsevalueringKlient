@@ -7,10 +7,13 @@ import sun.misc.BASE64Encoder;
 import java.io.IOException;
 import java.security.MessageDigest;
 
-//TODO: Comments and documentation needed.
+//Denne klasse er genbrug af Serverens kode, da det er samme metoder og keys som skal bruges.
+/*
+Klienten har mistet meget sikkerhed ved og have Hash og krypterings Key'ne sat ind i klienten på denne måde,
+men er gjort på denne måde på grund af øvelsen i opgaven.
+ */
 public class Digester {
 
-    //TODO: Set SALT and KEY in config-file.
     private final static String SALT = ConfigLoader.HASH_SALT;
     private final static String KEY = ConfigLoader.ENCRYPT_KEY;
     private static MessageDigest digester;
