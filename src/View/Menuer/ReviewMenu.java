@@ -53,7 +53,7 @@ public class ReviewMenu {
 
             case 1:
                 ReviewView reviewView = new ReviewView();
-                reviewView.deleteReview(currentUserId);
+                reviewView.deleteReviewStudent(currentUserId);
                 break;
 
             case 2:
@@ -73,9 +73,9 @@ public class ReviewMenu {
 
     public void reviewMenuTeacher (int currentUserId){
 
-        //System.out.println("(1) - Slet review");
-        System.out.println("(1) - Gå tilbage til menuen");
-        System.out.println("(2) - Shut down");
+        System.out.println("(1) - Slet review");
+        System.out.println("(2) - Gå tilbage til menuen");
+        System.out.println("(3) - Shut down");
 
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
@@ -83,11 +83,15 @@ public class ReviewMenu {
         switch (choice) {
 
             case 1:
+                ReviewView reviewView = new ReviewView();
+                reviewView.deleteReviewTeacher(currentUserId);
+                break;
+            case 2:
                 Controller controller = new Controller();
                 controller.showTeacherMenu(currentUserId);
                 break;
 
-            case 2:
+            case 3:
                 System.exit(0);
                 break;
 

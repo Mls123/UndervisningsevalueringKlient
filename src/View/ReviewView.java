@@ -94,15 +94,45 @@ public class ReviewView {
         }
 
 
-        public void deleteReview(final int currentUserId) {
+        public void deleteReviewStudent(final int currentUserId) {
 
+            if (currentUserId == 0) {
+                System.out.println("Du skal logge ind for og slette et review!");
+
+            } else {
+                System.out.println("indtast review id, for den du vil slette: ");
+
+                Scanner inputReader = new Scanner(System.in);
+                int reviewSlet = inputReader.nextInt();
+
+                ReviewService reviewService = new ReviewService();
+                reviewService.deleteReviewStudent(reviewSlet, new ResponseCallback<Boolean>() {
+                    public void success(Boolean data) {
+                        System.out.println("Reviewet er slettet.");
+                        Controller controller = new Controller();
+                        controller.showStudentMenu(currentUserId);
+                    }
+
+                    public void error(int status) {
+
+                    }
+                });
+
+            }
+        }
+    public void deleteReviewTeacher(final int currentUserId) {
+
+        if (currentUserId == 0) {
+            System.out.println("Du skal logge ind for og slette et review!");
+
+        } else {
             System.out.println("indtast review id, for den du vil slette: ");
 
             Scanner inputReader = new Scanner(System.in);
             int reviewSlet = inputReader.nextInt();
 
             ReviewService reviewService = new ReviewService();
-            reviewService.delete(currentUserId, reviewSlet, new ResponseCallback<Boolean>() {
+            reviewService.deleteReviewTeacher(reviewSlet, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
                     Controller controller = new Controller();
@@ -115,7 +145,7 @@ public class ReviewView {
             });
 
         }
-
+    }
 
         public void update(){
             ReviewService reviewService = new ReviewService();

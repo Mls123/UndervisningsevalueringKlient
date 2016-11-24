@@ -98,12 +98,25 @@ public class ReviewService {
         }
 
     }
-    public void delete(int currentUserId, int reviewSletId, final ResponseCallback<Boolean> responseCallback){
-
-        //Review review = new Review();
-        //review.setId(reviewSletId);
+    public void deleteReviewStudent(int reviewSletId, final ResponseCallback<Boolean> responseCallback){
 
         HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewSletId);
+        deleteRequest.addHeader("Content-Type", "application/json");
+
+        connection.execute(deleteRequest, new ResponseParser() {
+            public void payload(String json) {
+                responseCallback.success(true);
+            }
+
+            public void error(int status) {
+                responseCallback.error(status);
+            }
+        });
+
+    }
+    public void deleteReviewTeacher(int reviewSletId, final ResponseCallback<Boolean> responseCallback){
+
+        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewSletId);
         deleteRequest.addHeader("Content-Type", "application/json");
 
         connection.execute(deleteRequest, new ResponseParser() {
