@@ -102,18 +102,18 @@ public class ReviewView {
             int reviewSlet = inputReader.nextInt();
 
             ReviewService reviewService = new ReviewService();
-            reviewService.delete(currentUserId, reviewSlet, new ResponseCallback<Review>() {
-                public void success(Review data) {
+            reviewService.delete(currentUserId, reviewSlet, new ResponseCallback<Boolean>() {
+                public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
-
+                    Controller controller = new Controller();
+                    controller.showStudentMenu(currentUserId);
                 }
 
                 public void error(int status) {
 
                 }
             });
-            Controller controller = new Controller();
-            controller.showStudentMenu(currentUserId);
+
         }
 
 
