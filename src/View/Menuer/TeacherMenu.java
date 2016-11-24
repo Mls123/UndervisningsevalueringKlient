@@ -15,6 +15,7 @@ public class TeacherMenu {
     System.out.println("Main menu");
     System.out.println("(1) - Kurser og ratings");
     System.out.println("(2) - Statistik");
+    //System.out.println("(3) - Deltagelse");
     System.out.println("(3) - Shut down");
 
     Scanner inputReader = new Scanner(System.in);

@@ -5,6 +5,7 @@ import sdk.Models.*;
 import sdk.ServerConnection.ResponseCallback;
 import sdk.Service.CourseService;
 import sdk.Service.LectureService;
+import sdk.Service.ReviewService;
 import sdk.Service.StudyService;
 
 import java.util.ArrayList;
@@ -84,14 +85,28 @@ public class KursusView {
         showLectures(code, currentUserId);
     }
 
-    public void showLectures(String code, int currentUserId){
+    public void showLectures(String code, final int currentUserId){
         LectureService lectureService = new LectureService();
+
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
                 for (Lecture lecture : data) {
-                    System.out.println("\n"+"id:          " + lecture.getId());
+                    System.out.println("\n" + "id:          " + lecture.getId());
                     System.out.println("Type:        " + lecture.getType());
-                    System.out.println("Description: " + lecture.getDescription() + "\n");
+                    System.out.println("Description: " + lecture.getDescription());
+
+/*
+                    if ()
+                    ReviewService reviewService = new ReviewService();
+                    reviewService.getAll(lecture.getId(), new ResponseCallback<ArrayList<Review>>() {
+                        public void success(ArrayList<Review> data) {
+                            System.out.println("Deltagelse: " + data.size() + "\n");
+                        }
+
+                        public void error(int status) {
+
+                        }
+                    });*/
                 }
             }
 
@@ -118,5 +133,21 @@ public class KursusView {
         ReviewView reviewView = new ReviewView();
         reviewView.showRatings(currentUserId, currentLectureId);
 
+
+
     }
+    /*
+    public void studentIndex (){
+
+        ReviewService reviewService = new ReviewService();
+        reviewService.getAll(new ResponseCallback<ArrayList<Review>>() {
+            public void success(ArrayList<Review> data) {
+                System.out.println("Deltagelse: " + data.size());
+            }
+
+            public void error(int status) {
+
+            }
+        });
+    }*/
 }
