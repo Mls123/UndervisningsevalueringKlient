@@ -1,6 +1,7 @@
-package View;
+package View.Menuer;
 
 import Logic.Controller;
+import View.ReviewView;
 import sdk.Models.Lecture;
 import sdk.Service.ReviewService;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class ReviewMenu {
 
-    public void reviewMenuStudent (int currentUserId, int lectureId){
+    public void reviewMenuStudent (int currentUserId, int currentLectureId){
 
         System.out.println("(1) - Opret review");
         System.out.println("(2) - Gå tilbage til menuen");
@@ -22,7 +23,7 @@ public class ReviewMenu {
 
             case 1:
                 ReviewView reviewView = new ReviewView();
-                reviewView.createReview(currentUserId, lectureId);
+                reviewView.createReview(currentUserId, currentLectureId);
                 break;
             case 2:
                 Controller controller = new Controller();
@@ -34,12 +35,12 @@ public class ReviewMenu {
 
             default:
                 System.out.println("Prøv igen");
-                reviewMenuStudent(currentUserId, lectureId);
+                reviewMenuStudent(currentUserId, currentLectureId);
                 break;
         }
     }
 
-    public void reviewMenuStudentMetode1 (int currentUserId, int lectureId){
+    public void reviewMenuStudentMetode1 (int currentUserId){
 
         System.out.println("(1) - Slet review");
         System.out.println("(2) - Gå tilbage til menuen");
@@ -65,7 +66,7 @@ public class ReviewMenu {
 
             default:
                 System.out.println("Prøv igen");
-                reviewMenuStudent(currentUserId, lectureId);
+                reviewMenuStudentMetode1(currentUserId);
                 break;
         }
     }

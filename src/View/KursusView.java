@@ -1,5 +1,6 @@
 package View;
 
+import Logic.Controller;
 import sdk.Models.*;
 import sdk.ServerConnection.ResponseCallback;
 import sdk.Service.CourseService;
@@ -80,10 +81,10 @@ public class KursusView {
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast id for at se Lectures til et af dine kurser: ");
         String code = input.nextLine();
-        showLectures(code);
+        showLectures(code, currentUserId);
     }
 
-    public void showLectures(String code){
+    public void showLectures(String code, int currentUserId){
         LectureService lectureService = new LectureService();
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
@@ -112,9 +113,10 @@ public class KursusView {
         });
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast id for at se Reviews til den tilhørende lecture: ");
-        int lectureId = input.nextInt();
+        int currentLectureId = input.nextInt();
 
         ReviewView reviewView = new ReviewView();
-        reviewView.showRatings(lectureId);
+        reviewView.showRatings(currentUserId, currentLectureId);
+
     }
 }

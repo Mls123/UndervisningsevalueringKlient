@@ -1,10 +1,12 @@
-package View;
+package View.Menuer;
 
+import View.KursusView;
+import View.Menuer.ReviewMenu;
 import sdk.Models.Lecture;
 
 import java.util.Scanner;
 
-public class TeacherView {
+public class TeacherMenu {
 
     public void teacherMenu(int currentUserId){
 

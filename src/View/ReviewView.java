@@ -1,6 +1,8 @@
 package View;
 
 import Logic.Controller;
+import View.Menuer.ReviewMenu;
+import View.Menuer.StudentMenu;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import sdk.Models.Course;
 import sdk.Models.Lecture;
@@ -15,15 +17,16 @@ import java.util.Scanner;
 
 public class ReviewView {
 
-    public void showRatings(int lectureId){
+    public void showRatings(final int currentUserId, final int currentLectureId){
 
         ReviewService reviewService = new ReviewService();
-        reviewService.getAll(lectureId, new ResponseCallback<ArrayList<Review>>() {
+        reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
                     System.out.println("\n"+"id:        " + review.getId());
                     System.out.println("Rating:    " + review.getRating());
                     System.out.println("Kommentar: " + review.getComment() + "\n");
+
                 }
             }
 
@@ -31,6 +34,10 @@ public class ReviewView {
 
             }
         });
+        System.out.println(currentLectureId);
+
+        ReviewMenu reviewMenu = new ReviewMenu();
+        reviewMenu.reviewMenuStudent(currentUserId, currentLectureId);
     }
 
     public void showRatingsFromUser(int currentUserId){
@@ -51,7 +58,9 @@ public class ReviewView {
             }
         });
     }
-        public void createReview(final int currentUserId, final int lectureId) {
+        public void createReview(final int currentUserId, final int currentLectureId) {
+
+            //if ingen reviews - skriv det pænere.
 
             System.out.println("Oprettelse af review: ");
 
@@ -69,7 +78,7 @@ public class ReviewView {
             review.setComment(comment);
             review.setRating(rating);
             review.setUserId(currentUserId);
-            review.setLectureId(lectureId);
+            review.setLectureId(currentLectureId);
 
             reviewService.create(review, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
@@ -96,14 +105,15 @@ public class ReviewView {
             reviewService.delete(currentUserId, reviewSlet, new ResponseCallback<Review>() {
                 public void success(Review data) {
                     System.out.println("Reviewet er slettet.");
-                    Controller controller = new Controller();
-                    controller.showStudentMenu(currentUserId);
+
                 }
 
                 public void error(int status) {
 
                 }
             });
+            Controller controller = new Controller();
+            controller.showStudentMenu(currentUserId);
         }
 
 

@@ -1,41 +1,24 @@
 package Logic;
 
 import View.*;
-import sdk.Models.Lecture;
+import View.Menuer.StudentMenu;
+import View.Menuer.TeacherMenu;
 
 public class Controller {
 
     public void showStudentMenu(int currentUserId){
-        StudentView studentView = new StudentView();
-        int lectureId = 0;
-        studentView.studentMenu(currentUserId, lectureId);
+        StudentMenu studentView = new StudentMenu();
+        int currentLectureId = 0;
+        studentView.studentMenu(currentUserId, currentLectureId);
     }
     public void showTeacherMenu(int currentUserId){
-        TeacherView teacherView = new TeacherView();
+        TeacherMenu teacherView = new TeacherMenu();
         teacherView.teacherMenu(currentUserId);
     }
     public void showLoginView(){
 
         LoginView loginView = new LoginView();
         loginView.presentLogin();
-    }
-
-    public LoginView getLoginView()
-    {
-        LoginView loginView = new LoginView();
-        return loginView;
-    }
-
-    public void showKursusView(){
-
-    }
-
-    public void showRatingView(){
-
-    }
-
-    public void showOmView(){
-
     }
 
 }

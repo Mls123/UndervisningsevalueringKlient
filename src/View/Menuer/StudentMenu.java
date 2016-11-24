@@ -1,12 +1,15 @@
-package View;
+package View.Menuer;
 
+import View.KursusView;
+import View.Menuer.ReviewMenu;
+import View.ReviewView;
 import sdk.Models.Lecture;
 
 import java.util.Scanner;
 
-public class StudentView {
+public class StudentMenu {
 
-        public void studentMenu(int currentUserId, int lectureId) {
+        public void studentMenu(int currentUserId, int currentLectureId) {
 
                 System.out.println("\n" + "============================================" + "\n");
                 System.out.println("Main menu");
@@ -23,9 +26,6 @@ public class StudentView {
                         KursusView kursusView = new KursusView();
                         kursusView.showCourses(currentUserId);
 
-                        ReviewMenu reviewMenu = new ReviewMenu();
-                        reviewMenu.reviewMenuStudent(currentUserId, lectureId);
-
                         break;
 
                     case 2:
@@ -33,7 +33,7 @@ public class StudentView {
                         reviewView.showRatingsFromUser(currentUserId);
 
                         ReviewMenu reviewMenu1 = new ReviewMenu();
-                        reviewMenu1.reviewMenuStudentMetode1(currentUserId, lectureId);
+                        reviewMenu1.reviewMenuStudentMetode1(currentUserId);
 
                         break;
 
@@ -43,7 +43,7 @@ public class StudentView {
 
                     default:
                         System.out.println("Prøv igen");
-                        studentMenu(currentUserId, lectureId);
+                        studentMenu(currentUserId, currentLectureId);
                         break;
                 }
             }
