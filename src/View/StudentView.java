@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StudentView {
 
-        public void studentMenu(int currentUserId) {
+        public void studentMenu(int currentUserId, int lectureId) {
 
                 System.out.println("\n" + "============================================" + "\n");
                 System.out.println("Main menu");
@@ -20,22 +20,20 @@ public class StudentView {
                 switch (choice) {
 
                     case 1:
-
                         KursusView kursusView = new KursusView();
                         kursusView.showCourses(currentUserId);
 
                         ReviewMenu reviewMenu = new ReviewMenu();
-                        reviewMenu.reviewMenuStudent(currentUserId);
+                        reviewMenu.reviewMenuStudent(currentUserId, lectureId);
 
                         break;
 
                     case 2:
-
                         ReviewView reviewView = new ReviewView();
                         reviewView.showRatingsFromUser(currentUserId);
 
                         ReviewMenu reviewMenu1 = new ReviewMenu();
-                        reviewMenu1.reviewMenuStudent1(currentUserId);
+                        reviewMenu1.reviewMenuStudentMetode1(currentUserId, lectureId);
 
                         break;
 
@@ -45,7 +43,7 @@ public class StudentView {
 
                     default:
                         System.out.println("Prøv igen");
-                        studentMenu(currentUserId);
+                        studentMenu(currentUserId, lectureId);
                         break;
                 }
             }

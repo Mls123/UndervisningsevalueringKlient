@@ -114,10 +114,7 @@ public class KursusView {
         System.out.println("Indtast id for at se Reviews til den tilhørende lecture: ");
         int lectureId = input.nextInt();
 
-        //lecture = new Lecture();
-        //lecture.setId(lectureId);
-
-        //ReviewView reviewView = new ReviewView();
-        //reviewView.showRatings(lecture);
+        ReviewView reviewView = new ReviewView();
+        reviewView.showRatings(lectureId);
     }
 }

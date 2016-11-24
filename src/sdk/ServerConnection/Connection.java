@@ -1,6 +1,6 @@
 package sdk.ServerConnection;
 
-//er til så man kan lave et URL request.
+/**er til og lave et URL request.*/
 import com.google.gson.JsonObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,7 +13,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 
-//Denne klasse er lavet i fællesskab med øvelseslæreren Jesper.
+/**Denne klasse er lavet i fællesskab med øvelseslæreren Jesper.*/
 public class Connection {
 
     //Denne er static så den kan tilgås overalt i klassen.

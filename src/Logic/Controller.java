@@ -7,7 +7,8 @@ public class Controller {
 
     public void showStudentMenu(int currentUserId){
         StudentView studentView = new StudentView();
-        studentView.studentMenu(currentUserId);
+        int lectureId = 0;
+        studentView.studentMenu(currentUserId, lectureId);
     }
     public void showTeacherMenu(int currentUserId){
         TeacherView teacherView = new TeacherView();

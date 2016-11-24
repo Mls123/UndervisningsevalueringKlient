@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ReviewMenu {
 
-    public void reviewMenuStudent (int currentUserId){
+    public void reviewMenuStudent (int currentUserId, int lectureId){
 
         System.out.println("(1) - Opret review");
         System.out.println("(2) - Gå tilbage til menuen");
@@ -22,7 +22,7 @@ public class ReviewMenu {
 
             case 1:
                 ReviewView reviewView = new ReviewView();
-                reviewView.createReview(currentUserId);
+                reviewView.createReview(currentUserId, lectureId);
                 break;
             case 2:
                 Controller controller = new Controller();
@@ -34,12 +34,12 @@ public class ReviewMenu {
 
             default:
                 System.out.println("Prøv igen");
-                reviewMenuStudent(currentUserId);
+                reviewMenuStudent(currentUserId, lectureId);
                 break;
         }
     }
 
-    public void reviewMenuStudent1 (int currentUserId){
+    public void reviewMenuStudentMetode1 (int currentUserId, int lectureId){
 
         System.out.println("(1) - Slet review");
         System.out.println("(2) - Gå tilbage til menuen");
@@ -65,13 +65,14 @@ public class ReviewMenu {
 
             default:
                 System.out.println("Prøv igen");
-                reviewMenuStudent(currentUserId);
+                reviewMenuStudent(currentUserId, lectureId);
                 break;
         }
     }
 
     public void reviewMenuTeacher (int currentUserId){
 
+        //System.out.println("(1) - Slet review");
         System.out.println("(1) - Gå tilbage til menuen");
         System.out.println("(2) - Shut down");
 

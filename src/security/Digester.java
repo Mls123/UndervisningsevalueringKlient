@@ -7,10 +7,9 @@ import sun.misc.BASE64Encoder;
 import java.io.IOException;
 import java.security.MessageDigest;
 
-//Denne klasse er genbrug af Serverens kode, da det er samme metoder og keys som skal bruges.
-/*
-Klienten har mistet meget sikkerhed ved og have Hash og krypterings Key'ne sat ind i klienten på denne måde,
-men er gjort på denne måde på grund af øvelsen i opgaven.
+/**Denne klasse er genbrug af Serverens kode, da det er samme metoder og keys som skal bruges.
+*Klienten har mistet meget sikkerhed ved og have Hash og krypterings Key'ne sat ind i klienten på denne måde,
+*men er gjort på denne måde på grund af øvelsen i opgaven.
  */
 public class Digester {
 
@@ -19,7 +18,7 @@ public class Digester {
     private static MessageDigest digester;
 
 
-    //Opretter objekt, som benyttes af MD5 (hashfunktion)
+    /**Opretter objekt, som benyttes af MD5 (hashfunktion)*/
     static {
         try {
             digester = MessageDigest.getInstance("MD5");
@@ -34,7 +33,7 @@ public class Digester {
      * @return MD5 hash of string
      */
 
-    //Hashing påbegyndes
+    //Hashing
     public static String hash(String str) {
         if (str == null || str.length() == 0) {
             throw new IllegalArgumentException("Error");
@@ -42,7 +41,7 @@ public class Digester {
         return Digester._hash(str);
     }
 
-    //Hashing + SALT påbegyndes
+    //Hashing + SALT
     public static String hashWithSalt(String str){
         if (str == null || str.length() == 0) {
             throw new IllegalArgumentException("Error");
@@ -87,7 +86,6 @@ public class Digester {
         return decrypted_string;
     }
 
-    //
     private static byte[] xorWithKey(byte[] a, byte[] key) {
         byte[] out = new byte[a.length];
         for (int i = 0; i < a.length; i++) {
