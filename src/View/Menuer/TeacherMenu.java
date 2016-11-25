@@ -2,6 +2,7 @@ package View.Menuer;
 
 import View.KursusView;
 import View.Menuer.ReviewMenu;
+import View.ParticipationView;
 import sdk.Models.Lecture;
 
 import java.util.Scanner;
@@ -10,13 +11,12 @@ public class TeacherMenu {
 
     public void teacherMenu(int currentUserId){
 
-
     System.out.println("\n" + "============================================" + "\n");
     System.out.println("Main menu");
     System.out.println("(1) - Kurser og ratings");
     System.out.println("(2) - Statistik");
-    //System.out.println("(3) - Deltagelse");
-    System.out.println("(3) - Shut down");
+    System.out.println("(3) - Deltagelse");
+    System.out.println("(4) - Shut down");
 
     Scanner inputReader = new Scanner(System.in);
     int choice = inputReader.nextInt();
@@ -50,6 +50,11 @@ public class TeacherMenu {
 
             break;
         case 3:
+            ParticipationView participationView = new ParticipationView();
+            participationView.participationMenu(currentUserId);
+            break;
+
+        case 4:
             System.exit(0);
 
             break;

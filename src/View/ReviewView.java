@@ -34,7 +34,6 @@ public class ReviewView {
 
             }
         });
-        System.out.println(currentLectureId);
 
         ReviewMenu reviewMenu = new ReviewMenu();
         reviewMenu.reviewMenuStudent(currentUserId, currentLectureId);

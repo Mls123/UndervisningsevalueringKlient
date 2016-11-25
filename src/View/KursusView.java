@@ -27,19 +27,7 @@ public class KursusView {
             }
 
             public void error(int status) {
-                System.out.println(
-                                "░░░░░░░░░▄▄░░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "▄███▄████░░███▄░░░░░░░\n" +
-                                "█░░░█░░░█░░█░░░███░░░░\n" +
-                                "█░░░█░░░█░░█░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░░░█░░░░\n" +
-                                "█░░░░░░░░░░░░░░██░░░░░\n" +
-                                "█████░░░░░░░░░██░░░░░░");
+
             }
         });
 
@@ -64,19 +52,7 @@ public class KursusView {
             }
 
             public void error(int status) {
-                System.out.println(
-                        "░░░░░░░░░▄▄░░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "▄███▄████░░███▄░░░░░░░\n" +
-                                "█░░░█░░░█░░█░░░███░░░░\n" +
-                                "█░░░█░░░█░░█░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░░░█░░░░\n" +
-                                "█░░░░░░░░░░░░░░██░░░░░\n" +
-                                "█████░░░░░░░░░██░░░░░░");
+
             }
         });
         Scanner input = new Scanner(System.in);
@@ -95,35 +71,11 @@ public class KursusView {
                     System.out.println("Type:        " + lecture.getType());
                     System.out.println("Description: " + lecture.getDescription());
 
-/*
-                    if ()
-                    ReviewService reviewService = new ReviewService();
-                    reviewService.getAll(lecture.getId(), new ResponseCallback<ArrayList<Review>>() {
-                        public void success(ArrayList<Review> data) {
-                            System.out.println("Deltagelse: " + data.size() + "\n");
-                        }
-
-                        public void error(int status) {
-
-                        }
-                    });*/
                 }
             }
 
             public void error(int status) {
-                System.out.println(
-                        "░░░░░░░░░▄▄░░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "░░░░░░░░█░░█░░░░░░░░░░\n" +
-                                "▄███▄████░░███▄░░░░░░░\n" +
-                                "█░░░█░░░█░░█░░░███░░░░\n" +
-                                "█░░░█░░░█░░█░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░█░░█░░░\n" +
-                                "█░░░░░░░░░░░░░░░░█░░░░\n" +
-                                "█░░░░░░░░░░░░░░██░░░░░\n" +
-                                "█████░░░░░░░░░██░░░░░░");
+
             }
         });
         Scanner input = new Scanner(System.in);
@@ -136,18 +88,5 @@ public class KursusView {
 
 
     }
-    /*
-    public void studentIndex (){
-
-        ReviewService reviewService = new ReviewService();
-        reviewService.getAll(new ResponseCallback<ArrayList<Review>>() {
-            public void success(ArrayList<Review> data) {
-                System.out.println("Deltagelse: " + data.size());
-            }
-
-            public void error(int status) {
-
-            }
-        });
-    }*/
 }
+
