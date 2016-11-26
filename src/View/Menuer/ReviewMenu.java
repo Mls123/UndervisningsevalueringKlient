@@ -23,7 +23,7 @@ public class ReviewMenu {
 
             case 1:
                 ReviewView reviewView = new ReviewView();
-                reviewView.createReview(currentUserId, currentLectureId);
+                reviewView.createReviewStudent(currentUserId, currentLectureId);
                 break;
             case 2:
                 Controller controller = new Controller();

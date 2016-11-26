@@ -26,7 +26,7 @@ public class TeacherMenu {
         case 1:
 
             KursusView kursusView = new KursusView();
-            kursusView.showCourses(currentUserId);
+            kursusView.showCoursesTeacher(currentUserId);
 
             ReviewMenu reviewMenu = new ReviewMenu();
             reviewMenu.reviewMenuTeacher(currentUserId);

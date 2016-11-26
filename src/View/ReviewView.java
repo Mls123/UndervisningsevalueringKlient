@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class ReviewView {
 
-    public void showRatings(final int currentUserId, final int currentLectureId){
+    public void showRatingsStudent(final int currentUserId, final int currentLectureId){
 
         ReviewService reviewService = new ReviewService();
         reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
@@ -34,9 +34,28 @@ public class ReviewView {
 
             }
         });
-
         ReviewMenu reviewMenu = new ReviewMenu();
         reviewMenu.reviewMenuStudent(currentUserId, currentLectureId);
+    }
+    public void showRatingsTeacher(final int currentUserId, final int currentLectureId){
+
+        ReviewService reviewService = new ReviewService();
+        reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
+            public void success(ArrayList<Review> data) {
+                for (Review review : data) {
+                    System.out.println("\n"+"id:        " + review.getId());
+                    System.out.println("Rating:    " + review.getRating());
+                    System.out.println("Kommentar: " + review.getComment() + "\n");
+
+                }
+            }
+
+            public void error(int status) {
+
+            }
+        });
+        ReviewMenu reviewMenu = new ReviewMenu();
+        reviewMenu.reviewMenuTeacher(currentUserId);
     }
 
     public void showRatingsFromUser(int currentUserId){
@@ -57,7 +76,7 @@ public class ReviewView {
             }
         });
     }
-        public void createReview(final int currentUserId, final int currentLectureId) {
+        public void createReviewStudent(final int currentUserId, final int currentLectureId) {
 
             //if ingen reviews - skriv det pænere.
 
@@ -91,7 +110,6 @@ public class ReviewView {
                 }
             });
         }
-
 
         public void deleteReviewStudent(final int currentUserId) {
 
@@ -135,7 +153,7 @@ public class ReviewView {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
                     Controller controller = new Controller();
-                    controller.showStudentMenu(currentUserId);
+                    controller.showTeacherMenu(currentUserId);
                 }
 
                 public void error(int status) {

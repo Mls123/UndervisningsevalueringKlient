@@ -39,7 +39,7 @@ public class KursusView {
 
     }
 
-    public void showCourses(int currentUserId){
+    public void showCoursesStudent(int currentUserId){
         CourseService courseService = new CourseService();
         courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
@@ -58,10 +58,10 @@ public class KursusView {
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast id for at se Lectures til et af dine kurser: ");
         String code = input.nextLine();
-        showLectures(code, currentUserId);
+        showLecturesStudent(code, currentUserId);
     }
 
-    public void showLectures(String code, final int currentUserId){
+    public void showLecturesStudent(String code, final int currentUserId){
         LectureService lectureService = new LectureService();
 
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
@@ -83,9 +83,54 @@ public class KursusView {
         int currentLectureId = input.nextInt();
 
         ReviewView reviewView = new ReviewView();
-        reviewView.showRatings(currentUserId, currentLectureId);
+        reviewView.showRatingsStudent(currentUserId, currentLectureId);
+    }
 
+    public void showCoursesTeacher(int currentUserId){
+        CourseService courseService = new CourseService();
+        courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
+            public void success(ArrayList<Course> data) {
+                for (Course course : data) {
+                    System.out.println("\n"+"id: " + course.getId());
+                    System.out.println("Name: " + course.getDisplaytext());
+                    System.out.println("Code: " + course.getCode() + "\n");
 
+                }
+            }
+
+            public void error(int status) {
+
+            }
+        });
+        Scanner input = new Scanner(System.in);
+        System.out.println("Indtast id for at se Lectures til et af dine kurser: ");
+        String code = input.nextLine();
+        showLecturesTeacher(code, currentUserId);
+    }
+
+    public void showLecturesTeacher(String code, final int currentUserId){
+        LectureService lectureService = new LectureService();
+
+        lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
+            public void success(ArrayList<Lecture> data) {
+                for (Lecture lecture : data) {
+                    System.out.println("\n" + "id:          " + lecture.getId());
+                    System.out.println("Type:        " + lecture.getType());
+                    System.out.println("Description: " + lecture.getDescription());
+
+                }
+            }
+
+            public void error(int status) {
+
+            }
+        });
+        Scanner input = new Scanner(System.in);
+        System.out.println("Indtast id for at se Reviews til den tilhørende lecture: ");
+        int currentLectureId = input.nextInt();
+
+        ReviewView reviewView = new ReviewView();
+        reviewView.showRatingsTeacher(currentUserId, currentLectureId);
 
     }
 }

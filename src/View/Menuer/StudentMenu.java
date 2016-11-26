@@ -24,7 +24,7 @@ public class StudentMenu {
 
                     case 1:
                         KursusView kursusView = new KursusView();
-                        kursusView.showCourses(currentUserId);
+                        kursusView.showCoursesStudent(currentUserId);
 
                         break;
 

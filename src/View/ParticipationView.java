@@ -2,6 +2,7 @@ package View;
 
 import Logic.Controller;
 import View.Menuer.ReviewMenu;
+import View.Menuer.TeacherMenu;
 import sdk.Models.Course;
 import sdk.Models.Lecture;
 import sdk.Models.Review;
@@ -20,6 +21,7 @@ public class ParticipationView {
         System.out.println("(1) - Se deltagelse for en lecture ");
         System.out.println("(2) - Se samlet deltagelse for et kursus");
         System.out.println("(3) - Se gennemsnit for deltagelsesraten af alle kurser ");
+        System.out.println("(4) - Gå tilbage til main menu");
 
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
@@ -29,11 +31,7 @@ public class ParticipationView {
             case 1:
                 showCourseParticipation(currentUserId);
 
-                System.out.println("\nIndtast id for kurset hvis lectures ønskes vises: ");
-                Scanner input = new Scanner(System.in);
-                String code = input.nextLine();
-
-                showLecturesParticipation(code);
+                showLecturesParticipation(currentUserId);
 
                 Controller controller = new Controller();
                 controller.showTeacherMenu(currentUserId);
@@ -41,7 +39,7 @@ public class ParticipationView {
                 break;
             case 2:
                showCourseParticipation(currentUserId);
-               gatheredParticipationCourse();
+               gatheredParticipationCourse(currentUserId);
 
 
                 break;
@@ -60,6 +58,10 @@ public class ParticipationView {
                 System.out.println("\n" + "Work in progres...");
                 participationMenu(currentUserId);
 
+                break;
+            case 4:
+                Controller controller1 = new Controller();
+                controller1.showTeacherMenu(currentUserId);
                 break;
 
             default:
@@ -87,26 +89,27 @@ public class ParticipationView {
 
     }
 
-    public void showLecturesParticipation(String code){
+    public void showLecturesParticipation(final int currentUserId){
+
+        System.out.println("\nIndtast id for kurset hvis lectures ønskes vises: ");
+        Scanner input = new Scanner(System.in);
+        String code = input.nextLine();
 
             LectureService lectureService = new LectureService();
             lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
                 public void success(ArrayList<Lecture> data) {
-                for (Lecture lecture : data) {
                     if (data.size() == 0) {
                         System.out.println("Der er ingen lectures til dette kursus");
+                    }
 
-                    }else if (data.size() != 0){
-                        for (Lecture lecture1 : data) {
+                    for (Lecture lecture : data) {
                             System.out.println("\nid:          " + lecture.getId());
                             System.out.println("Type:        " + lecture.getType());
                             System.out.println("Description: " + lecture.getDescription());
 
                         }
-                        lectureDataNullFalse();
+                        lectureDataNullFalse(currentUserId);
                     }
-                }
-            }
 
                 public void error(int status) {
 
@@ -115,14 +118,14 @@ public class ParticipationView {
 
         }
 
-    public void lectureDataNullFalse (){
+    public void lectureDataNullFalse (int currentUserId){
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast id for at se deltagelse til den tilhørende lecture: ");
         int currentLectureId = input.nextInt();
-        showRatingsParticipation(currentLectureId);
+        showRatingsParticipation(currentLectureId, currentUserId);
     }
 
-    public void showRatingsParticipation(int currentLectureId){
+    public void showRatingsParticipation(int currentLectureId, int currentUserId){
 
         ReviewService reviewService = new ReviewService();
         reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
@@ -131,8 +134,8 @@ public class ParticipationView {
                     if (data.size() == 0){
                         System.out.println("Der er ingen der har deltaget");
                     } else{
-                        System.out.println("\nDenne deltagelses tælling er på baggrund af besvarelser givet af en forelæsning´eller lecture \n");
-                        System.out.println("Deltagelse: " + data.size());
+                        System.out.println("\nDenne deltagelses tælling er på baggrund af besvarelser givet af en forelæsning eller lecture \n");
+                        System.out.println("Deltagelse: " + data.size() + "\n");
                     }
                 }
             }
@@ -142,23 +145,34 @@ public class ParticipationView {
             }
         });
 
+        participationMenu(currentUserId);
+
     }
 
-    public void gatheredParticipationCourse() {
+    public void gatheredParticipationCourse(final int currentUserId) {
         System.out.println("\nIndtast id for kursuset hvis samlede deltagelse ønskes vises: ");
         Scanner input = new Scanner(System.in);
         String code = input.nextLine();
 
+        System.out.println("\nDeltagelse pr. lecture for kurset " + code + "\n");
+
         LectureService lectureService = new LectureService();
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
+
             public void success(ArrayList<Lecture> data) {
-                int lectureId = 0;
-                for (Lecture lecture : data) {
-                    lectureId = lecture.getId();
-                    bom(lectureId);
+
+                if (data.size() == 0) {
+                        System.out.println("der er ingen lectures til deette kursus");
+                        participationMenu(currentUserId);
+                    }
+                    int lectureId = 0;
+                    for (Lecture lecture : data) {
+                        lectureId = lecture.getId();
+                        reviewSize(lectureId, currentUserId);
+
+                    }
                 }
 
-            }
 
             public void error(int status) {
 
@@ -167,7 +181,7 @@ public class ParticipationView {
 
     }
 
-    public void bom(int lectureId){
+    public void reviewSize(final int lectureId, int currentUserId){
         ReviewService reviewService = new ReviewService();
         reviewService.getAll(lectureId, new ResponseCallback<ArrayList<Review>>() {
 
@@ -176,9 +190,8 @@ public class ParticipationView {
                 for (Review review : data) {
                     int size = data.size();
                     size++;
-                    System.out.println(size+1);
-
-                    ArrayList<Size> size1 = new ArrayList<Size>();
+                    System.out.println("lecture id: " + lectureId);
+                    System.out.println("Deltagelse: " + size + "\n");
 
                 }
             }
@@ -187,5 +200,6 @@ public class ParticipationView {
 
             }
         });
+        participationMenu(currentUserId);
     }
 }
