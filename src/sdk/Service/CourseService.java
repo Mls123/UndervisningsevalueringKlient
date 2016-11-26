@@ -58,5 +58,25 @@ public class CourseService {
         });
 
     }
+    public void getAverageRatingCourse(int courseId, final ResponseCallback<ArrayList<Course>> responseCallback){
+        String courseIdEncrypt = Digester.encrypt(String.valueOf(courseId));
+
+        //der er http også hvilken metode du skal bruge get fx.
+        HttpGet getRequest = new HttpGet(Connection.serverURL + "/teacher/averageCourseRating/" +  courseIdEncrypt);
+
+        //i javascript skal this altid defineres, her behøves den ikke
+        connection.execute(getRequest, new ResponseParser() {
+            public void payload(String json) {
+                //Her bliver det modtagede json gemt i en arrayliste
+               // ArrayList<Course> courses = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Course>>(){}.getType());
+                //responseCallback.success(courses);
+            }
+
+            public void error(int status) {
+                responseCallback.error(status);
+            }
+        });
+
+    }
 }
 
