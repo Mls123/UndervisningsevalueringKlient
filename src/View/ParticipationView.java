@@ -1,12 +1,9 @@
 package View;
 
 import Logic.Controller;
-import View.Menuer.ReviewMenu;
-import View.Menuer.TeacherMenu;
 import sdk.Models.Course;
 import sdk.Models.Lecture;
 import sdk.Models.Review;
-import sdk.Models.Size;
 import sdk.ServerConnection.ResponseCallback;
 import sdk.Service.CourseService;
 import sdk.Service.LectureService;
@@ -19,10 +16,10 @@ import java.util.Scanner;
 public class ParticipationView {
 
     public void participationMenu(int currentUserId){
-        System.out.println("(1) - Deltagelse for en lecture "); //Reviewparticipation
+        System.out.println("(1) - Deltagelse for en lecture ");
         System.out.println("(2) - Antal deltagere for et kursus ");
-        System.out.println("(3) - Samlet rating for et kursus "); //calculateaverageratingoncourse
-        System.out.println("(4) - Samlet rating for en lecture "); //calculateAverageRatingOnLecture
+        System.out.println("(3) - Samlet rating for et kursus ");
+        System.out.println("(4) - Samlet rating for en lecture ");
         System.out.println("(5) - Gå tilbage til main menu");
 
         Scanner inputReader = new Scanner(System.in);
