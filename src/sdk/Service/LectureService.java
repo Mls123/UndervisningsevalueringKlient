@@ -33,9 +33,8 @@ public class LectureService {
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
 
-                //String jsonDecrypt = Digester.decrypt(json);
                 //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Lecture> lectures = gson.fromJson(json, new TypeToken<ArrayList<Lecture>>(){}.getType());
+                ArrayList<Lecture> lectures = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Lecture>>(){}.getType());
                 responseCallback.success(lectures);
             }
 

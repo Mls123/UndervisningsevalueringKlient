@@ -36,7 +36,7 @@ public class StudyService {
 
                 //String jsonDecrypt = Digester.decrypt(json);
                 //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Study> studies = gson.fromJson(json, new TypeToken<ArrayList<Study>>(){}.getType());
+                ArrayList<Study> studies = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Study>>(){}.getType());
                 responseCallback.success(studies);
             }
 

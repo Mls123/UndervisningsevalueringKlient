@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class StudentMenu {
 
-        public void studentMenu(int currentUserId, int currentLectureId) {
+        public void studentMenu(int currentUserId) {
 
                 System.out.println("\n" + "============================================" + "\n");
                 System.out.println("Main menu");
@@ -43,7 +43,7 @@ public class StudentMenu {
 
                     default:
                         System.out.println("Prøv igen");
-                        studentMenu(currentUserId, currentLectureId);
+                        studentMenu(currentUserId);
                         break;
                 }
             }

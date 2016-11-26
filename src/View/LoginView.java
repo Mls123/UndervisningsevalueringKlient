@@ -28,6 +28,7 @@ public class LoginView {
         UserService userService = new UserService();
         userService.login(mail, securePW, new ResponseCallback<User>() {
             public void success(User data) {
+
                 if (data == null) {
 
                     System.out.println(

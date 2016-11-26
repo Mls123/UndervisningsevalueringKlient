@@ -44,7 +44,7 @@ public class ReviewService {
 
                 //String jsonDecrypt = Digester.decrypt(json);
                 //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Review> reviews = gson.fromJson(json, new TypeToken<ArrayList<Review>>(){}.getType());
+                ArrayList<Review> reviews = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Review>>(){}.getType());
                 responseCallback.success(reviews);
             }
 
@@ -65,7 +65,7 @@ public class ReviewService {
 
                 //String jsonDecrypt = Digester.decrypt(json);
                 //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Review> reviews = gson.fromJson(json, new TypeToken<ArrayList<Review>>(){}.getType());
+                ArrayList<Review> reviews = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Review>>(){}.getType());
                 responseCallback.success(reviews);
             }
 
@@ -80,7 +80,7 @@ public class ReviewService {
             HttpPost postRequest = new HttpPost(Connection.serverURL + "/student/review");
             postRequest.addHeader("Content-Type", "application/json");
 
-            StringEntity jsonReview = new StringEntity(gson.toJson(review));
+            StringEntity jsonReview = new StringEntity(Digester.encrypt(gson.toJson(review)));
             postRequest.setEntity(jsonReview);
 
             this.connection.execute(postRequest, new ResponseParser() {
@@ -98,9 +98,11 @@ public class ReviewService {
         }
 
     }
-    public void deleteReviewStudent(int reviewSletId, final ResponseCallback<Boolean> responseCallback){
+    public void deleteReviewStudent(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
 
-        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewSletId);
+        String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
+
+        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewSletIdEncrypt);
         deleteRequest.addHeader("Content-Type", "application/json");
 
         connection.execute(deleteRequest, new ResponseParser() {
@@ -114,9 +116,11 @@ public class ReviewService {
         });
 
     }
-    public void deleteReviewTeacher(int reviewSletId, final ResponseCallback<Boolean> responseCallback){
+    public void deleteReviewTeacher(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
 
-        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewSletId);
+        String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
+
+        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewSletIdEncrypt);
         deleteRequest.addHeader("Content-Type", "application/json");
 
         connection.execute(deleteRequest, new ResponseParser() {
@@ -140,7 +144,7 @@ public class ReviewService {
             updateRequest.setEntity(jsonReview);
             connection.execute(updateRequest, new ResponseParser() {
                 public void payload(String json) {
-                    Review updatedReview = gson.fromJson(json, Review.class);
+                    Review updatedReview = gson.fromJson(Digester.decrypt(json), Review.class);
                     responseCallback.success(updatedReview);
                 }
 

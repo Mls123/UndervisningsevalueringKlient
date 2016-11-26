@@ -9,7 +9,7 @@ public class Controller {
     public void showStudentMenu(int currentUserId){
         StudentMenu studentView = new StudentMenu();
         int currentLectureId = 0;
-        studentView.studentMenu(currentUserId, currentLectureId);
+        studentView.studentMenu(currentUserId);
     }
     public void showTeacherMenu(int currentUserId){
         TeacherMenu teacherView = new TeacherMenu();

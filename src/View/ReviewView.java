@@ -26,7 +26,6 @@ public class ReviewView {
                     System.out.println("\n"+"id:        " + review.getId());
                     System.out.println("Rating:    " + review.getRating());
                     System.out.println("Kommentar: " + review.getComment() + "\n");
-
                 }
             }
 
@@ -90,7 +89,6 @@ public class ReviewView {
             Scanner inputReader1 = new Scanner(System.in);
             final String comment = inputReader1.nextLine();
 
-
             ReviewService reviewService = new ReviewService();
             Review review = new Review();
             review.setComment(comment);
@@ -122,8 +120,10 @@ public class ReviewView {
                 Scanner inputReader = new Scanner(System.in);
                 int reviewSlet = inputReader.nextInt();
 
+                String reviewSletId = String.valueOf(reviewSlet);
+
                 ReviewService reviewService = new ReviewService();
-                reviewService.deleteReviewStudent(reviewSlet, new ResponseCallback<Boolean>() {
+                reviewService.deleteReviewStudent(reviewSletId, new ResponseCallback<Boolean>() {
                     public void success(Boolean data) {
                         System.out.println("Reviewet er slettet.");
                         Controller controller = new Controller();
@@ -148,8 +148,10 @@ public class ReviewView {
             Scanner inputReader = new Scanner(System.in);
             int reviewSlet = inputReader.nextInt();
 
+            String reviewSletId = String.valueOf(reviewSlet);
+
             ReviewService reviewService = new ReviewService();
-            reviewService.deleteReviewTeacher(reviewSlet, new ResponseCallback<Boolean>() {
+            reviewService.deleteReviewTeacher(reviewSletId, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
                     Controller controller = new Controller();

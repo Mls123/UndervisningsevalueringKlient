@@ -32,13 +32,14 @@ public class UserService {
 
         try {
 
-            StringEntity userInfo = new StringEntity(this.gson.toJson(login));
+            StringEntity userInfo = new StringEntity(Digester.encrypt(gson.toJson(login)));
             postRequest.setEntity(userInfo);
             postRequest.setHeader("Content-Type", "application/json");
 
             connection.execute(postRequest, new ResponseParser() {
                 public void payload(String json) {
-                    User userLogin = gson.fromJson(json, User.class);
+
+                    User userLogin = gson.fromJson(Digester.decrypt(json), User.class);
                     responseCallback.success(userLogin);
 
                 }
