@@ -38,8 +38,10 @@ public class CourseService {
     //ArrayList<Book> = T, nu er pladsen T taget, derfor er den ikke en placeholder mere.
     public void getAll(int currentUserId, final ResponseCallback<ArrayList<Course>> responseCallback){
 
+        String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUserId));
+
         //der er http også hvilken metode du skal bruge get fx.
-        HttpGet getRequest = new HttpGet(Connection.serverURL + "/course/" +  currentUserId);
+        HttpGet getRequest = new HttpGet(Connection.serverURL + "/course/" +  currentUserIdEncrypt);
 
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {

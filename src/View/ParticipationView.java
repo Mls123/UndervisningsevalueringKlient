@@ -11,6 +11,7 @@ import sdk.ServerConnection.ResponseCallback;
 import sdk.Service.CourseService;
 import sdk.Service.LectureService;
 import sdk.Service.ReviewService;
+import sdk.Service.TeacherService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,10 +19,11 @@ import java.util.Scanner;
 public class ParticipationView {
 
     public void participationMenu(int currentUserId){
-        System.out.println("(1) - Se deltagelse for en lecture ");
-        System.out.println("(2) - Se samlet deltagelse for et kursus");
-        System.out.println("(3) - Se gennemsnit for deltagelsesraten af alle kurser ");
-        System.out.println("(4) - Gå tilbage til main menu");
+        System.out.println("(1) - Deltagelse for en lecture "); //Reviewparticipation
+        System.out.println("(2) - Antal deltagere for et kursus ");
+        System.out.println("(3) - Samlet rating for et kursus "); //calculateaverageratingoncourse
+        System.out.println("(4) - Samlet rating for en lecture "); //calculateAverageRatingOnLecture
+        System.out.println("(5) - Gå tilbage til main menu");
 
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
@@ -29,37 +31,32 @@ public class ParticipationView {
         switch (choice) {
 
             case 1:
-                showCourseParticipation(currentUserId);
+                showCourses(currentUserId);
 
-                showLecturesParticipation(currentUserId);
+                showLectures(currentUserId);
 
                 Controller controller = new Controller();
                 controller.showTeacherMenu(currentUserId);
 
+                //reviewParticipation();
+
                 break;
             case 2:
-               showCourseParticipation(currentUserId);
-               gatheredParticipationCourse(currentUserId);
-
+                showCourses(currentUserId);
+                courseParticipation();
 
                 break;
             case 3:
-                System.out.println(
-                                "░▄▀▄▀▀▀▀▄▀▄░░░░░░░░░\n" +
-                                "░█░░░░░░░░▀▄░░░░░░▄░\n" +
-                                "█░░▀░░▀░░░░░▀▄▄░░█░█\n" +
-                                "█░▄░█▀░▄░░░░░░░▀▀░░█\n" +
-                                "█░░▀▀▀▀░░░░░░░░░░░░█\n" +
-                                "█░░░░░░░░░░░░░░░░░░█\n" +
-                                "█░░░░░░░░░░░░░░░░░░█\n" +
-                                "░█░░▄▄░░▄▄▄▄░░▄▄░░█░\n" +
-                                "░█░▄▀█░▄▀░░█░▄▀█░▄▀░\n" +
-                                "░░▀░░░▀░░░░░▀░░░▀░░░");
-                System.out.println("\n" + "Work in progres...");
-                participationMenu(currentUserId);
+                StatisticView statisticView = new StatisticView();
+                statisticView.calculateAverageRatingOnCourse();
 
                 break;
             case 4:
+                StatisticView statisticView1 = new StatisticView();
+                statisticView1.calculateAverageRatingOnLecture();
+
+                break;
+            case 5:
                 Controller controller1 = new Controller();
                 controller1.showTeacherMenu(currentUserId);
                 break;
@@ -70,7 +67,30 @@ public class ParticipationView {
         }
     }
 
-    public void showCourseParticipation(int currentUserId){
+    public void courseParticipation(){
+
+        System.out.println("indtast id for ønsket kursus ");
+        Scanner input = new Scanner(System.in);
+        int courseId = input.nextInt();
+
+        TeacherService teacherService = new TeacherService();
+        teacherService.getCourseParticipation(courseId, new ResponseCallback<ArrayList<Course>>() {
+            public void success(ArrayList<Course> data) {
+                    System.out.println("Deltagelse: " + data);
+            }
+
+            public void error(int status) {
+                System.out.println(status);
+            }
+        });
+    }
+
+    public void reviewParticipation(){
+
+    }
+
+
+    public void showCourses(int currentUserId){
         CourseService courseService = new CourseService();
         courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
@@ -89,7 +109,7 @@ public class ParticipationView {
 
     }
 
-    public void showLecturesParticipation(final int currentUserId){
+    public void showLectures(final int currentUserId){
 
         System.out.println("\nIndtast id for kurset hvis lectures ønskes vises: ");
         Scanner input = new Scanner(System.in);
@@ -122,10 +142,10 @@ public class ParticipationView {
         Scanner input = new Scanner(System.in);
         System.out.println("Indtast id for at se deltagelse til den tilhørende lecture: ");
         int currentLectureId = input.nextInt();
-        showRatingsParticipation(currentLectureId, currentUserId);
+        showRatings(currentLectureId, currentUserId);
     }
 
-    public void showRatingsParticipation(int currentLectureId, int currentUserId){
+    public void showRatings(int currentLectureId, int currentUserId){
 
         ReviewService reviewService = new ReviewService();
         reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
@@ -147,59 +167,5 @@ public class ParticipationView {
 
         participationMenu(currentUserId);
 
-    }
-
-    public void gatheredParticipationCourse(final int currentUserId) {
-        System.out.println("\nIndtast id for kursuset hvis samlede deltagelse ønskes vises: ");
-        Scanner input = new Scanner(System.in);
-        String code = input.nextLine();
-
-        System.out.println("\nDeltagelse pr. lecture for kurset " + code + "\n");
-
-        LectureService lectureService = new LectureService();
-        lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
-
-            public void success(ArrayList<Lecture> data) {
-
-                if (data.size() == 0) {
-                        System.out.println("der er ingen lectures til deette kursus");
-                        participationMenu(currentUserId);
-                    }
-                    int lectureId = 0;
-                    for (Lecture lecture : data) {
-                        lectureId = lecture.getId();
-                        reviewSize(lectureId, currentUserId);
-
-                    }
-                }
-
-
-            public void error(int status) {
-
-            }
-        });
-
-    }
-
-    public void reviewSize(final int lectureId, int currentUserId){
-        ReviewService reviewService = new ReviewService();
-        reviewService.getAll(lectureId, new ResponseCallback<ArrayList<Review>>() {
-
-            public void success(ArrayList<Review> data) {
-
-                for (Review review : data) {
-                    int size = data.size();
-                    size++;
-                    System.out.println("lecture id: " + lectureId);
-                    System.out.println("Deltagelse: " + size + "\n");
-
-                }
-            }
-
-            public void error(int status) {
-
-            }
-        });
-        participationMenu(currentUserId);
     }
 }

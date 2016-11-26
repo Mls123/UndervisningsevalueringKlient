@@ -35,8 +35,10 @@ public class ReviewService {
 
     public void getAll(int lectureId, final ResponseCallback<ArrayList<Review>> responseCallback){
 
+        String lectureIdEncrypt = Digester.encrypt(String.valueOf(lectureId));
+
         //der er http også hvilken metode du skal bruge get fx.
-        HttpGet getRequest = new HttpGet(Connection.serverURL + "/review/" + lectureId);
+        HttpGet getRequest = new HttpGet(Connection.serverURL + "/review/" + lectureIdEncrypt);
 
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {
@@ -56,8 +58,10 @@ public class ReviewService {
     }
     public void getAllFromUser(int currentUser, final ResponseCallback<ArrayList<Review>> responseCallback){
 
+        String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUser));
+
         //der er http også hvilken metode du skal bruge get fx.
-        HttpGet getRequest = new HttpGet(Connection.serverURL + "/reviews/" + currentUser);
+        HttpGet getRequest = new HttpGet(Connection.serverURL + "/reviews/" + currentUserIdEncrypt);
 
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {

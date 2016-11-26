@@ -26,8 +26,10 @@ public class LectureService {
 
     public void getAll(String code, final ResponseCallback<ArrayList<Lecture>> responseCallback){
 
+        String codeEncrypt = Digester.encrypt(code);
+
         //der er http også hvilken metode du skal bruge get fx.
-        HttpGet getRequest = new HttpGet(Connection.serverURL + "/lecture/" + code);
+        HttpGet getRequest = new HttpGet(Connection.serverURL + "/lecture/" + codeEncrypt);
 
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {
