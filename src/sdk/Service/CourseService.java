@@ -68,8 +68,8 @@ public class CourseService {
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
                 //Her bliver det modtagede json gemt i en arrayliste
-               // ArrayList<Course> courses = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Course>>(){}.getType());
-                //responseCallback.success(courses);
+                ArrayList<Course> courses = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Course>>(){}.getType());
+                responseCallback.success(courses);
             }
 
             public void error(int status) {

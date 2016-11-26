@@ -44,6 +44,7 @@ public class ParticipationView {
 
                 break;
             case 3:
+                showCourses(currentUserId);
                 StatisticView statisticView = new StatisticView();
                 statisticView.calculateAverageRatingOnCourse();
 

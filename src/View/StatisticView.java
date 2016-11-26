@@ -5,13 +5,16 @@ import sdk.ServerConnection.ResponseCallback;
 import sdk.Service.CourseService;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StatisticView {
 
     public void calculateAverageRatingOnCourse(){
         CourseService courseService = new CourseService();
 
-        int courseId = 0;
+        System.out.println("\nindtast id for kursus: ");
+        Scanner input = new Scanner(System.in);
+        int courseId = input.nextInt();
 
         courseService.getAverageRatingCourse(courseId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
