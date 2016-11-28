@@ -1,6 +1,7 @@
 package View;
 
 import Logic.Controller;
+import View.Menuer.TeacherMenu;
 import sdk.Models.Course;
 import sdk.Models.Lecture;
 import sdk.Models.Review;
@@ -29,29 +30,27 @@ public class ParticipationView {
 
             case 1:
                 showCourses(currentUserId);
-
                 showLectures(currentUserId);
 
                 Controller controller = new Controller();
                 controller.showTeacherMenu(currentUserId);
 
-                //reviewParticipation();
-
                 break;
             case 2:
                 showCourses(currentUserId);
-                courseParticipation();
+                StatisticView statisticView = new StatisticView();
+                statisticView.courseParticipation();
 
                 break;
             case 3:
                 showCourses(currentUserId);
-                StatisticView statisticView = new StatisticView();
-                statisticView.calculateAverageRatingOnCourse();
+                StatisticView statisticView1 = new StatisticView();
+                statisticView1.calculateAverageRatingOnCourse();
 
                 break;
             case 4:
-                StatisticView statisticView1 = new StatisticView();
-                statisticView1.calculateAverageRatingOnLecture();
+                StatisticView statisticView2 = new StatisticView();
+                statisticView2.calculateAverageRatingOnLecture(currentUserId);
 
                 break;
             case 5:
@@ -64,29 +63,6 @@ public class ParticipationView {
                 participationMenu(currentUserId);
         }
     }
-
-    public void courseParticipation(){
-
-        System.out.println("indtast id for ønsket kursus ");
-        Scanner input = new Scanner(System.in);
-        int courseId = input.nextInt();
-
-        TeacherService teacherService = new TeacherService();
-        teacherService.getCourseParticipation(courseId, new ResponseCallback<ArrayList<Course>>() {
-            public void success(ArrayList<Course> data) {
-                    System.out.println("Deltagelse: " + data);
-            }
-
-            public void error(int status) {
-                System.out.println(status);
-            }
-        });
-    }
-
-    public void reviewParticipation(){
-
-    }
-
 
     public void showCourses(int currentUserId){
         CourseService courseService = new CourseService();
