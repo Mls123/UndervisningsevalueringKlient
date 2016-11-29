@@ -31,9 +31,7 @@ public class ParticipationView {
             case 1:
                 showCourses(currentUserId);
                 showLectures(currentUserId);
-
-                Controller controller = new Controller();
-                controller.showTeacherMenu(currentUserId);
+                participationMenu(currentUserId);
 
                 break;
             case 2:
@@ -41,8 +39,7 @@ public class ParticipationView {
                 StatisticView statisticView = new StatisticView();
                 statisticView.courseParticipation();
 
-                Controller controller1 = new Controller();
-                controller1.showTeacherMenu(currentUserId);
+                participationMenu(currentUserId);
 
                 break;
             case 3:
@@ -50,13 +47,14 @@ public class ParticipationView {
                 StatisticView statisticView1 = new StatisticView();
                 statisticView1.calculateAverageRatingOnCourse();
 
-                Controller controller2 = new Controller();
-                controller2.showTeacherMenu(currentUserId);
+                participationMenu(currentUserId);
 
                 break;
             case 4:
                 StatisticView statisticView2 = new StatisticView();
                 statisticView2.calculateAverageRatingOnLecture(currentUserId);
+
+                participationMenu(currentUserId);
 
                 break;
             case 5:
@@ -144,8 +142,5 @@ public class ParticipationView {
 
             }
         });
-
-        participationMenu(currentUserId);
-
     }
 }
