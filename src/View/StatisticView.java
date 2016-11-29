@@ -14,21 +14,21 @@ public class StatisticView {
     public void calculateAverageRatingOnCourse(){
         TeacherService teacherService = new TeacherService();
 
-        System.out.println("\nindtast id for kursus: ");
+        System.out.println("\nindtast id for ønsket kursus: ");
         Scanner input = new Scanner(System.in);
         int courseId = input.nextInt();
 
-        teacherService.getAverageRatingCourse(courseId, new ResponseCallback<ArrayList<Course>>() {
-            public void success(ArrayList<Course> data) {
-                System.out.println(data);
+        teacherService.getAverageRatingCourse(courseId, new ResponseCallback<String>() {
+            public void success(String data) {
+                System.out.println("Gennemsnittet for dette kursus rating er: " + data);
             }
 
             public void error(int status) {
-                System.out.println(status);
+
             }
         });
-
     }
+
     public void courseParticipation(){
 
         System.out.println("indtast id for ønsket kursus ");
@@ -36,13 +36,13 @@ public class StatisticView {
         int courseId = input.nextInt();
 
         TeacherService teacherService = new TeacherService();
-        teacherService.getCourseParticipation(courseId, new ResponseCallback<ArrayList<Course>>() {
-            public void success(ArrayList<Course> data) {
+        teacherService.getCourseParticipation(courseId, new ResponseCallback<String>() {
+            public void success(String data) {
                 System.out.println("Deltagelse: " + data);
             }
 
             public void error(int status) {
-                System.out.println(status);
+
             }
         });
     }

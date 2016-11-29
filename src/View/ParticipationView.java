@@ -18,9 +18,9 @@ public class ParticipationView {
 
     public void participationMenu(int currentUserId){
         System.out.println("(1) - Deltagelse for en lecture ");
-        System.out.println("(2) - Antal deltagere for et kursus ");
+        System.out.println("(2) - Antal deltagere tildelt kursus ");
         System.out.println("(3) - Samlet rating for et kursus ");
-        System.out.println("(4) - Samlet rating for en lecture ");
+        //System.out.println("(4) - Samlet rating for en lecture ");
         System.out.println("(5) - Gå tilbage til main menu");
 
         Scanner inputReader = new Scanner(System.in);
@@ -41,11 +41,17 @@ public class ParticipationView {
                 StatisticView statisticView = new StatisticView();
                 statisticView.courseParticipation();
 
+                Controller controller1 = new Controller();
+                controller1.showTeacherMenu(currentUserId);
+
                 break;
             case 3:
                 showCourses(currentUserId);
                 StatisticView statisticView1 = new StatisticView();
                 statisticView1.calculateAverageRatingOnCourse();
+
+                Controller controller2 = new Controller();
+                controller2.showTeacherMenu(currentUserId);
 
                 break;
             case 4:
@@ -54,8 +60,8 @@ public class ParticipationView {
 
                 break;
             case 5:
-                Controller controller1 = new Controller();
-                controller1.showTeacherMenu(currentUserId);
+                Controller controller3 = new Controller();
+                controller3.showTeacherMenu(currentUserId);
                 break;
 
             default:

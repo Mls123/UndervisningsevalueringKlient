@@ -2,15 +2,11 @@ package sdk.Service;
 
 import View.KursusView;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.methods.HttpGet;
-import sdk.Models.Course;
 import sdk.ServerConnection.Connection;
 import sdk.ServerConnection.ResponseCallback;
 import sdk.ServerConnection.ResponseParser;
 import security.Digester;
-
-import java.util.ArrayList;
 
 /**
  * Created by User on 26-11-2016.
@@ -30,7 +26,7 @@ public class TeacherService {
         this.kursusView = new KursusView();
     }
 
-    public void getCourseParticipation(int courseId, final ResponseCallback<ArrayList<Course>> responseCallback){
+    public void getCourseParticipation(int courseId, final ResponseCallback<String> responseCallback){
 
         String courseParticipationEncrypt = Digester.encrypt(String.valueOf(courseId));
 
@@ -41,9 +37,8 @@ public class TeacherService {
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
 
-                //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Course> courses = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Course>>(){}.getType());
-                responseCallback.success(courses);
+                String jsonDecrypt = Digester.decrypt(json);
+                responseCallback.success(jsonDecrypt);
             }
 
             public void error(int status) {
@@ -52,7 +47,7 @@ public class TeacherService {
         });
 
     }
-    public void getAverageRatingCourse(int courseId, final ResponseCallback<ArrayList<Course>> responseCallback){
+    public void getAverageRatingCourse(int courseId, final ResponseCallback<String> responseCallback){
         String courseIdEncrypt = Digester.encrypt(String.valueOf(courseId));
 
         //der er http også hvilken metode du skal bruge get fx.
@@ -61,9 +56,8 @@ public class TeacherService {
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
-                //Her bliver det modtagede json gemt i en arrayliste
-                ArrayList<Course> courses = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Course>>(){}.getType());
-                responseCallback.success(courses);
+               String jsonDecrypt = Digester.decrypt(json);
+               responseCallback.success(jsonDecrypt);
             }
 
             public void error(int status) {
