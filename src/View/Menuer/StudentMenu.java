@@ -5,46 +5,52 @@ import View.Menuer.ReviewMenu;
 import View.ReviewView;
 import sdk.Models.Lecture;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class StudentMenu {
 
-        public void studentMenu(int currentUserId) {
+    public void studentMenu(int currentUserId) {
 
-                System.out.println("\n" + "============================================" + "\n");
-                System.out.println("Main menu");
-                System.out.println("(1) - Dine Kurser");
-                System.out.println("(2) - Dine Ratings");
-                System.out.println("(4) - Shut down");
+        System.out.println("\n" + "============================================" + "\n");
+        System.out.println("Main menu");
+        System.out.println("(1) - Dine Kurser");
+        System.out.println("(2) - Dine Ratings");
+        System.out.println("(4) - Shut down");
 
-                Scanner inputReader = new Scanner(System.in);
-                int choice = inputReader.nextInt();
+        try {
+            Scanner inputReader = new Scanner(System.in);
+            int choice = inputReader.nextInt();
 
-                switch (choice) {
+            switch (choice) {
 
-                    case 1:
-                        KursusView kursusView = new KursusView();
-                        kursusView.showCoursesStudent(currentUserId);
+                case 1:
+                    KursusView kursusView = new KursusView();
+                    kursusView.showCoursesStudent(currentUserId);
 
-                        break;
+                    break;
 
-                    case 2:
-                        ReviewView reviewView = new ReviewView();
-                        reviewView.showRatingsFromUser(currentUserId);
+                case 2:
+                    ReviewView reviewView = new ReviewView();
+                    reviewView.showRatingsFromUser(currentUserId);
 
-                        ReviewMenu reviewMenu1 = new ReviewMenu();
-                        reviewMenu1.reviewMenuStudentMetode1(currentUserId);
+                    ReviewMenu reviewMenu1 = new ReviewMenu();
+                    reviewMenu1.reviewMenuStudentMetode1(currentUserId);
 
-                        break;
+                    break;
 
-                    case 4:
-                        System.exit(0);
-                        break;
+                case 4:
+                    System.exit(0);
+                    break;
 
-                    default:
-                        System.out.println("Prøv igen");
-                        studentMenu(currentUserId);
-                        break;
-                }
+                default:
+                    System.out.println("Prøv igen");
+                    studentMenu(currentUserId);
+                    break;
             }
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert værdi indtastet");
+            studentMenu(currentUserId);
         }
+    }
+}

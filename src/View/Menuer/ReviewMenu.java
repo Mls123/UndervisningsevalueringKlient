@@ -6,6 +6,7 @@ import sdk.Models.Lecture;
 import sdk.Service.ReviewService;
 
 import java.sql.Connection;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReviewMenu {
@@ -16,6 +17,7 @@ public class ReviewMenu {
         System.out.println("(2) - Gå tilbage til menuen");
         System.out.println("(3) - Shut down");
 
+        try{
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
 
@@ -38,6 +40,10 @@ public class ReviewMenu {
                 reviewMenuStudent(currentUserId, currentLectureId);
                 break;
         }
+        }catch (InputMismatchException e){
+            System.out.println("Forkert værdi indtastet");
+            reviewMenuStudent(currentUserId, currentLectureId);
+        }
     }
 
     public void reviewMenuStudentMetode1 (int currentUserId){
@@ -46,6 +52,7 @@ public class ReviewMenu {
         System.out.println("(2) - Gå tilbage til menuen");
         System.out.println("(3) - Shut down");
 
+        try{
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
 
@@ -69,6 +76,10 @@ public class ReviewMenu {
                 reviewMenuStudentMetode1(currentUserId);
                 break;
         }
+        }catch (InputMismatchException e){
+            System.out.println("Forkert værdi indtastet");
+            reviewMenuStudentMetode1(currentUserId);
+        }
     }
 
     public void reviewMenuTeacher (int currentUserId){
@@ -77,6 +88,7 @@ public class ReviewMenu {
         System.out.println("(2) - Gå tilbage til menuen");
         System.out.println("(3) - Shut down");
 
+        try{
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
 
@@ -100,6 +112,9 @@ public class ReviewMenu {
                 reviewMenuTeacher(currentUserId);
                 break;
         }
+        }catch (InputMismatchException e){
+            System.out.println("Forkert værdi indtastet");
+            reviewMenuTeacher(currentUserId);
+        }
     }
-
 }

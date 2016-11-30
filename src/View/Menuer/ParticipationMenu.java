@@ -1,7 +1,8 @@
-package View;
+package View.Menuer;
 
 import Logic.Controller;
 import View.Menuer.TeacherMenu;
+import View.StatisticView;
 import sdk.Models.Course;
 import sdk.Models.Lecture;
 import sdk.Models.Review;
@@ -12,9 +13,10 @@ import sdk.Service.ReviewService;
 import sdk.Service.TeacherService;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ParticipationView {
+public class ParticipationMenu {
 
     public void participationMenu(int currentUserId){
         System.out.println("(1) - Deltagelse for en lecture ");
@@ -23,48 +25,53 @@ public class ParticipationView {
         //System.out.println("(4) - Samlet rating for en lecture ");
         System.out.println("(5) - Gå tilbage til main menu");
 
+        try {
         Scanner inputReader = new Scanner(System.in);
         int choice = inputReader.nextInt();
 
-        switch (choice) {
+            switch (choice) {
 
-            case 1:
-                showCourses(currentUserId);
-                showLectures(currentUserId);
-                participationMenu(currentUserId);
+                case 1:
+                    showCourses(currentUserId);
+                    showLectures(currentUserId);
+                    participationMenu(currentUserId);
 
-                break;
-            case 2:
-                showCourses(currentUserId);
-                StatisticView statisticView = new StatisticView();
-                statisticView.courseParticipation();
+                    break;
+                case 2:
+                    showCourses(currentUserId);
+                    StatisticView statisticView = new StatisticView();
+                    statisticView.courseParticipation();
 
-                participationMenu(currentUserId);
+                    participationMenu(currentUserId);
 
-                break;
-            case 3:
-                showCourses(currentUserId);
-                StatisticView statisticView1 = new StatisticView();
-                statisticView1.calculateAverageRatingOnCourse();
+                    break;
+                case 3:
+                    showCourses(currentUserId);
+                    StatisticView statisticView1 = new StatisticView();
+                    statisticView1.calculateAverageRatingOnCourse();
 
-                participationMenu(currentUserId);
+                    participationMenu(currentUserId);
 
-                break;
-            case 4:
-                StatisticView statisticView2 = new StatisticView();
-                statisticView2.calculateAverageRatingOnLecture(currentUserId);
+                    break;
+                case 4:
+                    StatisticView statisticView2 = new StatisticView();
+                    statisticView2.calculateAverageRatingOnLecture(currentUserId);
 
-                participationMenu(currentUserId);
+                    participationMenu(currentUserId);
 
-                break;
-            case 5:
-                Controller controller3 = new Controller();
-                controller3.showTeacherMenu(currentUserId);
-                break;
+                    break;
+                case 5:
+                    Controller controller3 = new Controller();
+                    controller3.showTeacherMenu(currentUserId);
+                    break;
 
-            default:
-                System.out.println("Prøv igen");
-                participationMenu(currentUserId);
+                default:
+                    System.out.println("Prøv igen");
+                    participationMenu(currentUserId);
+            }
+        }catch (InputMismatchException e){
+            System.out.println("Forkert værdi indtastet");
+            participationMenu(currentUserId);
         }
     }
 
