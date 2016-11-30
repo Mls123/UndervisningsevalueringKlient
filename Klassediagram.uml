@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Main</OriginalElement>
+  <nodes>
+    <node x="-22080.745169005088" y="-3560.999999999998">sdk.ServerConnection.ResponseParser</node>
+    <node x="-23029.99999999998" y="445.0000000000018">sdk.Models.Study</node>
+    <node x="-23346.847629676853" y="-3719.999999999998">security.Digester</node>
+    <node x="-23999.99999999998" y="445.0000000000018">sdk.Models.Course</node>
+    <node x="-22743.59762967685" y="-2722.499999999998">sdk.Service.CourseService</node>
+    <node x="-23511.99999999998" y="445.0000000000018">sdk.Models.Lecture</node>
+    <node x="-18848.620169005084" y="-2960.999999999998">sdk.Models.Review</node>
+    <node x="-20181.597629676853" y="-1719.9999999999982">View.KursusView</node>
+    <node x="-19850.472629676853" y="-976.4999999999982">View.StatisticView</node>
+    <node x="-19186.620169005088" y="-2205.999999999998">View.ReviewView</node>
+    <node x="-21441.33683567175" y="-3534.499999999998">sdk.ServerConnection.Connection</node>
+    <node x="-22670.99999999998" y="445.0000000000018">Logic.ConfigLoader</node>
+    <node x="-18402.245169005084" y="-179.99999999999818">View.LoginView</node>
+    <node x="-18940.116666666647" y="8.000000000001819">Logic.Controller</node>
+    <node x="-21900.597629676853" y="-2722.499999999998">sdk.Service.StudyService</node>
+    <node x="-19808.76420599488" y="-179.99999999999818">View.Menuer.TeacherMenu</node>
+    <node x="-23999.99999999998" y="-559.9999999999982">View.Menuer.ParticipationMenu</node>
+    <node x="-22399.991666666647" y="-1329.9999999999982">sdk.Service.TeacherService</node>
+    <node x="-19061.920269982977" y="-179.99999999999818">View.Menuer.StudentMenu</node>
+    <node x="-21124.597629676853" y="-2854.999999999998">sdk.Service.ReviewService</node>
+    <node x="-19181.472629676853" y="-506.9999999999982">View.Menuer.ReviewMenu</node>
+    <node x="-18369.386936649644" y="-453.9999999999982">sdk.Service.UserService</node>
+    <node x="-22162.99999999998" y="445.0000000000018">View.OmView</node>
+    <node x="-19458.370169005084" y="-2748.999999999998">sdk.ServerConnection.ResponseCallback</node>
+    <node x="-23634.59762967685" y="-2722.499999999998">sdk.Service.LectureService</node>
+    <node x="-18858.116666666647" y="282.0000000000018">Main</node>
+    <node x="-18218.745169005084" y="-1108.9999999999982">sdk.Models.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="View.Menuer.ParticipationMenu" target="Logic.Controller">
+      <point x="-131.0" y="165.0" />
+      <point x="-23868.99999999998" y="-11.999999999998181" />
+      <point x="-18909.366666666647" y="-11.999999999998181" />
+      <point x="-215.25" y="-112.0" />
+    </edge>
+    <edge source="sdk.Service.UserService" target="sdk.ServerConnection.ResponseParser">
+      <point x="-285.375" y="-59.0" />
+      <point x="-18274.261936649644" y="-579.9999999999982" />
+      <point x="-18238.10170599488" y="-579.9999999999982" />
+      <point x="-18238.10170599488" y="-3190.999999999998" />
+      <point x="-21740.66183567175" y="-3190.999999999998" />
+      <point x="154.58333333333348" y="85.5" />
+    </edge>
+    <edge source="sdk.Service.StudyService" target="security.Digester">
+      <point x="-151.20000000000005" y="-59.0" />
+      <point x="-21673.797629676854" y="-3110.999999999998" />
+      <point x="-22995.847629676853" y="-3110.999999999998" />
+      <point x="117.00000000000006" y="244.5" />
+    </edge>
+    <edge source="View.Menuer.StudentMenu" target="View.KursusView">
+      <point x="-126.33333333333326" y="-59.0" />
+      <point x="-18998.75360331631" y="-209.99999999999818" />
+      <point x="-19191.972629676853" y="-209.99999999999818" />
+      <point x="-19191.972629676853" y="-1349.9999999999982" />
+      <point x="-19732.722629676853" y="-1349.9999999999982" />
+      <point x="192.375" y="165.0" />
+    </edge>
+    <edge source="View.Menuer.ReviewMenu" target="View.ReviewView">
+      <point x="-139.0" y="-112.0" />
+      <point x="-19042.472629676853" y="-579.9999999999982" />
+      <point x="-18917.01420599488" y="-579.9999999999982" />
+      <point x="-18917.01420599488" y="-1739.9999999999982" />
+      <point x="-18994.020169005085" y="-1739.9999999999982" />
+      <point x="-128.4000000000001" y="218.0" />
+    </edge>
+    <edge source="View.KursusView" target="sdk.Service.StudyService">
+      <point x="73.28571428571422" y="-165.0" />
+      <point x="-19851.81191539114" y="-2305.999999999998" />
+      <point x="-21522.597629676853" y="-2305.999999999998" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="View.ReviewView" target="sdk.Models.Review">
+      <point x="214.00000000000023" y="-218.0" />
+      <point x="0.0" y="297.5" />
+    </edge>
+    <edge source="sdk.Service.LectureService" target="sdk.ServerConnection.Connection">
+      <point x="348.0" y="-59.0" />
+      <point x="-22851.59762967685" y="-3030.999999999998" />
+      <point x="-21353.83683567175" y="-3030.999999999998" />
+      <point x="-262.5" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.ParticipationMenu" target="sdk.ServerConnection.ResponseCallback">
+      <point x="104.80000000000018" y="-165.0" />
+      <point x="-23633.199999999983" y="-579.9999999999982" />
+      <point x="-23686.605963010184" y="-579.9999999999982" />
+      <point x="-23686.605963010184" y="-2235.999999999998" />
+      <point x="-19433.120169005084" y="-2235.999999999998" />
+      <point x="-126.25" y="85.5" />
+    </edge>
+    <edge source="View.StatisticView" target="View.Menuer.TeacherMenu">
+      <point x="162.0" y="112.0" />
+      <point x="-19364.472629676853" y="-209.99999999999818" />
+      <point x="-19573.76420599488" y="-209.99999999999818" />
+      <point x="47.0" y="-59.0" />
+    </edge>
+    <edge source="View.ReviewView" target="sdk.Service.ReviewService">
+      <point x="-213.99999999999977" y="-218.0" />
+      <point x="-19079.620169005084" y="-2315.999999999998" />
+      <point x="-20433.097629676853" y="-2315.999999999998" />
+      <point x="230.5" y="191.5" />
+    </edge>
+    <edge source="View.ReviewView" target="View.Menuer.ReviewMenu">
+      <point x="0.0" y="218.0" />
+      <point x="-18865.620169005088" y="-1739.9999999999982" />
+      <point x="-18906.01420599488" y="-1739.9999999999982" />
+      <point x="-18906.01420599488" y="-579.9999999999982" />
+      <point x="-18764.472629676853" y="-579.9999999999982" />
+      <point x="139.0" y="-112.0" />
+    </edge>
+    <edge source="View.Menuer.ParticipationMenu" target="View.StatisticView">
+      <point x="209.60000000000002" y="-165.0" />
+      <point x="-23528.39999999998" y="-579.9999999999982" />
+      <point x="-19688.472629676853" y="-579.9999999999982" />
+      <point x="-162.0" y="112.0" />
+    </edge>
+    <edge source="Logic.Controller" target="View.LoginView">
+      <point x="153.75" y="-112.0" />
+      <point x="-18540.366666666647" y="-21.99999999999818" />
+      <point x="-18316.995169005084" y="-21.99999999999818" />
+      <point x="-85.25" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.ParticipationMenu" target="sdk.Service.CourseService">
+      <point x="-104.80000000000018" y="-165.0" />
+      <point x="-23842.79999999998" y="-589.9999999999982" />
+      <point x="-23708.605963010184" y="-589.9999999999982" />
+      <point x="-23708.605963010184" y="-2255.999999999998" />
+      <point x="-22640.84762967685" y="-2255.999999999998" />
+      <point x="-308.25" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.StudentMenu" target="View.Menuer.ReviewMenu">
+      <point x="0.0" y="-59.0" />
+      <point x="-18872.420269982977" y="-199.99999999999818" />
+      <point x="-18903.472629676853" y="-199.99999999999818" />
+      <point x="0.0" y="112.0" />
+    </edge>
+    <edge source="sdk.Service.TeacherService" target="View.KursusView">
+      <point x="384.42857142857156" y="-85.5" />
+      <point x="-21567.063095238074" y="-1349.9999999999982" />
+      <point x="-19989.222629676853" y="-1349.9999999999982" />
+      <point x="-64.125" y="165.0" />
+    </edge>
+    <edge source="Logic.Controller" target="View.Menuer.StudentMenu">
+      <point x="-92.25" y="-112.0" />
+      <point x="-18786.366666666647" y="-31.99999999999818" />
+      <point x="-18872.420269982977" y="-31.99999999999818" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="Main" target="Logic.Controller">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="112.0" />
+    </edge>
+    <edge source="sdk.Service.TeacherService" target="sdk.ServerConnection.Connection">
+      <point x="128.1428571428571" y="-85.5" />
+      <point x="-21823.34880952379" y="-1369.9999999999982" />
+      <point x="-20192.097629676853" y="-1369.9999999999982" />
+      <point x="-20192.097629676853" y="-3180.999999999998" />
+      <point x="-20887.170169005083" y="-3180.999999999998" />
+      <point x="204.16666666666697" y="59.0" />
+    </edge>
+    <edge source="View.KursusView" target="sdk.ServerConnection.ResponseCallback">
+      <point x="146.57142857142867" y="-165.0" />
+      <point x="-19778.526201105422" y="-1739.9999999999982" />
+      <point x="-19840.81191539114" y="-1739.9999999999982" />
+      <point x="-19840.81191539114" y="-2225.999999999998" />
+      <point x="-19382.620169005084" y="-2225.999999999998" />
+      <point x="-75.75" y="85.5" />
+    </edge>
+    <edge source="View.LoginView" target="sdk.ServerConnection.ResponseCallback">
+      <point x="-85.25" y="-59.0" />
+      <point x="-18316.995169005084" y="-199.99999999999818" />
+      <point x="-18454.397629676852" y="-199.99999999999818" />
+      <point x="-18454.397629676852" y="-2345.999999999998" />
+      <point x="-19180.620169005088" y="-2345.999999999998" />
+      <point x="126.24999999999989" y="85.5" />
+    </edge>
+    <edge source="View.Menuer.TeacherMenu" target="View.KursusView">
+      <point x="-47.0" y="-59.0" />
+      <point x="-19667.76420599488" y="-209.99999999999818" />
+      <point x="-19860.972629676853" y="-209.99999999999818" />
+      <point x="64.125" y="165.0" />
+    </edge>
+    <edge source="View.LoginView" target="sdk.Service.UserService">
+      <point x="85.25" y="-59.0" />
+      <point x="-18146.495169005084" y="-199.99999999999818" />
+      <point x="-17988.886936649644" y="-199.99999999999818" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="View.StatisticView" target="sdk.ServerConnection.ResponseCallback">
+      <point x="162.0" y="-112.0" />
+      <point x="-19364.472629676853" y="-2225.999999999998" />
+      <point x="-19332.120169005084" y="-2225.999999999998" />
+      <point x="-25.25" y="85.5" />
+    </edge>
+    <edge source="View.KursusView" target="sdk.Service.LectureService">
+      <point x="-219.8571428571429" y="-165.0" />
+      <point x="-20144.954772533994" y="-1749.9999999999982" />
+      <point x="-20050.890508078213" y="-1749.9999999999982" />
+      <point x="-20050.890508078213" y="-2265.999999999998" />
+      <point x="-22982.09762967685" y="-2265.999999999998" />
+      <point x="217.5" y="59.0" />
+    </edge>
+    <edge source="sdk.Service.CourseService" target="sdk.ServerConnection.Connection">
+      <point x="328.79999999999995" y="-59.0" />
+      <point x="-22003.797629676854" y="-3010.999999999998" />
+      <point x="-21237.170169005083" y="-3010.999999999998" />
+      <point x="-145.83333333333337" y="59.0" />
+    </edge>
+    <edge source="sdk.Service.ReviewService" target="sdk.ServerConnection.Connection">
+      <point x="184.4000000000001" y="-191.5" />
+      <point x="-20479.19762967685" y="-3160.999999999998" />
+      <point x="-21003.83683567175" y="-3160.999999999998" />
+      <point x="87.5" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.ReviewMenu" target="Logic.Controller">
+      <point x="185.33333333333348" y="112.0" />
+      <point x="-18718.13929634352" y="-209.99999999999818" />
+      <point x="-18672.420269982977" y="-209.99999999999818" />
+      <point x="-18672.420269982977" y="-11.999999999998181" />
+      <point x="-18724.866666666647" y="-11.999999999998181" />
+      <point x="-30.75" y="-112.0" />
+    </edge>
+    <edge source="sdk.Service.CourseService" target="View.KursusView">
+      <point x="102.75" y="59.0" />
+      <point x="-22229.84762967685" y="-2285.999999999998" />
+      <point x="-20028.890508078213" y="-2285.999999999998" />
+      <point x="-20028.890508078213" y="-1739.9999999999982" />
+      <point x="-19998.383343962567" y="-1739.9999999999982" />
+      <point x="-73.28571428571422" y="-165.0" />
+    </edge>
+    <edge source="sdk.Service.StudyService" target="sdk.ServerConnection.ResponseParser">
+      <point x="0.0" y="-59.0" />
+      <point x="-21522.597629676853" y="-3120.999999999998" />
+      <point x="-21864.32850233842" y="-3120.999999999998" />
+      <point x="30.916666666666742" y="85.5" />
+    </edge>
+    <edge source="View.LoginView" target="Logic.Controller">
+      <point x="85.25" y="59.0" />
+      <point x="-18146.495169005084" y="-11.999999999998181" />
+      <point x="-18478.866666666647" y="-11.999999999998181" />
+      <point x="215.25" y="-112.0" />
+    </edge>
+    <edge source="sdk.Service.StudyService" target="sdk.ServerConnection.Connection">
+      <point x="302.39999999999986" y="-59.0" />
+      <point x="-21220.19762967685" y="-2980.999999999998" />
+      <point x="-21062.170169005083" y="-2980.999999999998" />
+      <point x="29.166666666666742" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.TeacherMenu" target="View.Menuer.ReviewMenu">
+      <point x="141.0" y="-59.0" />
+      <point x="-19479.76420599488" y="-199.99999999999818" />
+      <point x="-19088.805963010185" y="-199.99999999999818" />
+      <point x="-185.33333333333326" y="112.0" />
+    </edge>
+    <edge source="View.StatisticView" target="sdk.Service.TeacherService">
+      <point x="-162.0" y="-112.0" />
+      <point x="-19688.472629676853" y="-1133.9999999999982" />
+      <point x="-21951.491666666647" y="-1133.9999999999982" />
+      <point x="0.0" y="85.5" />
+    </edge>
+    <edge source="sdk.ServerConnection.ResponseCallback" target="Logic.Controller">
+      <point x="75.74999999999989" y="85.5" />
+      <point x="-19231.120169005088" y="-2335.999999999998" />
+      <point x="-18507.772629676852" y="-2335.999999999998" />
+      <point x="-18507.772629676852" y="-31.99999999999818" />
+      <point x="-18601.866666666647" y="-31.99999999999818" />
+      <point x="92.25" y="-112.0" />
+    </edge>
+    <edge source="View.Menuer.TeacherMenu" target="View.Menuer.ParticipationMenu">
+      <point x="-141.0" y="-59.0" />
+      <point x="-19761.76420599488" y="-199.99999999999818" />
+      <point x="-23606.99999999998" y="-199.99999999999818" />
+      <point x="131.0" y="165.0" />
+    </edge>
+    <edge source="View.Menuer.StudentMenu" target="View.ReviewView">
+      <point x="126.33333333333326" y="-59.0" />
+      <point x="-18746.08693664964" y="-199.99999999999818" />
+      <point x="-18571.805963010185" y="-199.99999999999818" />
+      <point x="-18571.805963010185" y="-1739.9999999999982" />
+      <point x="-18737.220169005086" y="-1739.9999999999982" />
+      <point x="128.39999999999986" y="218.0" />
+    </edge>
+    <edge source="sdk.Service.TeacherService" target="sdk.ServerConnection.ResponseParser">
+      <point x="-128.1428571428571" y="-85.5" />
+      <point x="-22079.634523809505" y="-1369.9999999999982" />
+      <point x="-22754.09762967685" y="-1369.9999999999982" />
+      <point x="-22754.09762967685" y="-3060.999999999998" />
+      <point x="-21987.995169005088" y="-3060.999999999998" />
+      <point x="-92.75" y="85.5" />
+    </edge>
+    <edge source="sdk.Service.CourseService" target="sdk.ServerConnection.ResponseParser">
+      <point x="0.0" y="-59.0" />
+      <point x="-22332.59762967685" y="-3050.999999999998" />
+      <point x="-21926.16183567175" y="-3050.999999999998" />
+      <point x="-30.91666666666663" y="85.5" />
+    </edge>
+    <edge source="View.ReviewView" target="Logic.Controller">
+      <point x="256.79999999999995" y="218.0" />
+      <point x="-18608.820169005085" y="-1749.9999999999982" />
+      <point x="-18523.972629676853" y="-1749.9999999999982" />
+      <point x="-18523.972629676853" y="-41.99999999999818" />
+      <point x="-18663.366666666647" y="-41.99999999999818" />
+      <point x="30.75" y="-112.0" />
+    </edge>
+    <edge source="sdk.Service.UserService" target="sdk.ServerConnection.Connection">
+      <point x="285.375" y="-59.0" />
+      <point x="-17703.511936649644" y="-579.9999999999982" />
+      <point x="-17843.245169005084" y="-579.9999999999982" />
+      <point x="-17843.245169005084" y="-3210.999999999998" />
+      <point x="-20770.50350233842" y="-3210.999999999998" />
+      <point x="320.8333333333335" y="59.0" />
+    </edge>
+    <edge source="View.Menuer.ParticipationMenu" target="sdk.Service.LectureService">
+      <point x="-209.5999999999999" y="-165.0" />
+      <point x="-23947.599999999984" y="-599.9999999999982" />
+      <point x="-23719.605963010184" y="-599.9999999999982" />
+      <point x="-23719.605963010184" y="-2265.999999999998" />
+      <point x="-23417.09762967685" y="-2265.999999999998" />
+      <point x="-217.5" y="59.0" />
+    </edge>
+    <edge source="View.KursusView" target="View.ReviewView">
+      <point x="219.8571428571429" y="-165.0" />
+      <point x="-19705.240486819708" y="-1739.9999999999982" />
+      <point x="-19122.420169005083" y="-1739.9999999999982" />
+      <point x="-256.79999999999995" y="218.0" />
+    </edge>
+    <edge source="sdk.Service.TeacherService" target="security.Digester">
+      <point x="-256.2857142857142" y="-85.5" />
+      <point x="-22207.777380952364" y="-1359.9999999999982" />
+      <point x="-23664.605963010184" y="-1359.9999999999982" />
+      <point x="-23664.605963010184" y="-3100.999999999998" />
+      <point x="-23276.647629676852" y="-3100.999999999998" />
+      <point x="-163.80000000000018" y="244.5" />
+    </edge>
+    <edge source="sdk.Service.CourseService" target="security.Digester">
+      <point x="-164.39999999999986" y="-59.0" />
+      <point x="-22496.99762967685" y="-3090.999999999998" />
+      <point x="-23089.44762967685" y="-3090.999999999998" />
+      <point x="23.400000000000034" y="244.5" />
+    </edge>
+    <edge source="View.KursusView" target="sdk.Service.CourseService">
+      <point x="0.0" y="-165.0" />
+      <point x="-19925.097629676853" y="-1739.9999999999982" />
+      <point x="-19923.888026147943" y="-1739.9999999999982" />
+      <point x="-19923.888026147943" y="-2295.999999999998" />
+      <point x="-22024.34762967685" y="-2295.999999999998" />
+      <point x="308.25" y="59.0" />
+    </edge>
+    <edge source="View.ReviewView" target="sdk.ServerConnection.ResponseCallback">
+      <point x="2.2737367544323206E-13" y="-218.0" />
+      <point x="-18865.620169005084" y="-2325.999999999998" />
+      <point x="-19281.620169005084" y="-2325.999999999998" />
+      <point x="25.25" y="85.5" />
+    </edge>
+    <edge source="sdk.Service.ReviewService" target="sdk.ServerConnection.ResponseParser">
+      <point x="0.0" y="-191.5" />
+      <point x="-20663.597629676853" y="-3150.999999999998" />
+      <point x="-21802.495169005088" y="-3150.999999999998" />
+      <point x="92.75" y="85.5" />
+    </edge>
+    <edge source="View.Menuer.ParticipationMenu" target="sdk.Service.ReviewService">
+      <point x="0.0" y="-165.0" />
+      <point x="-23737.99999999998" y="-579.9999999999982" />
+      <point x="-23697.605963010184" y="-579.9999999999982" />
+      <point x="-23697.605963010184" y="-2245.999999999998" />
+      <point x="-20894.097629676853" y="-2245.999999999998" />
+      <point x="-230.5" y="191.5" />
+    </edge>
+    <edge source="sdk.Service.LectureService" target="sdk.ServerConnection.ResponseParser">
+      <point x="0.0" y="-59.0" />
+      <point x="-23199.59762967685" y="-3070.999999999998" />
+      <point x="-22049.82850233842" y="-3070.999999999998" />
+      <point x="-154.58333333333337" y="85.5" />
+    </edge>
+    <edge source="sdk.Service.ReviewService" target="security.Digester">
+      <point x="-368.79999999999984" y="-191.5" />
+      <point x="-21032.397629676852" y="-3130.999999999998" />
+      <point x="-22949.047629676854" y="-3130.999999999998" />
+      <point x="163.80000000000007" y="244.5" />
+    </edge>
+    <edge source="sdk.Service.UserService" target="sdk.Models.User">
+      <point x="-95.125" y="-59.0" />
+      <point x="-18084.011936649644" y="-579.9999999999982" />
+      <point x="-18041.745169005084" y="-579.9999999999982" />
+      <point x="0.0" y="244.5" />
+    </edge>
+    <edge source="Logic.Controller" target="View.Menuer.TeacherMenu">
+      <point x="-153.75" y="-112.0" />
+      <point x="-18847.866666666647" y="-21.99999999999818" />
+      <point x="-19620.76420599488" y="-21.99999999999818" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="sdk.Service.LectureService" target="security.Digester">
+      <point x="-348.0" y="-59.0" />
+      <point x="-23547.59762967685" y="-3090.999999999998" />
+      <point x="-23229.847629676853" y="-3090.999999999998" />
+      <point x="-116.99999999999997" y="244.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4" x="-20177.25" y="-2172.25" />
+  <SelectedNodes>
+    <node>sdk.Models.Course</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

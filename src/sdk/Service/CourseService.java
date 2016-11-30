@@ -39,12 +39,13 @@ public class CourseService {
     public void getAll(int currentUserId, final ResponseCallback<ArrayList<Course>> responseCallback){
 
         String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUserId));
-
+        //try{
         //der er http også hvilken metode du skal bruge get fx.
         HttpGet getRequest = new HttpGet(Connection.serverURL + "/course/" +  currentUserIdEncrypt);
 
         //i javascript skal this altid defineres, her behøves den ikke
         connection.execute(getRequest, new ResponseParser() {
+
             public void payload(String json) {
 
                 //Her bliver det modtagede json gemt i en arrayliste
@@ -57,6 +58,9 @@ public class CourseService {
             }
         });
 
+    //}catch (NullPointerException e){
+      //      System.out.println("ingen data");
+        // }
     }
 }
 

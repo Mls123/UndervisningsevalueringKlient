@@ -39,15 +39,24 @@ public class KursusView {
 
     }
 
-    public void showCoursesStudent(int currentUserId){
+    public void showCoursesStudent(final int currentUserId) {
         CourseService courseService = new CourseService();
         courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
-                for (Course course : data) {
-                    System.out.println("\n"+"id: " + course.getId());
-                    System.out.println("Name: " + course.getDisplaytext());
-                    System.out.println("Code: " + course.getCode() + "\n");
+                if (data != null) {
+                    for (Course course : data) {
+                        System.out.println("\n" + "id: " + course.getId());
+                        System.out.println("Name: " + course.getDisplaytext());
+                        System.out.println("Code: " + course.getCode() + "\n");
 
+                    }
+                    Scanner input = new Scanner(System.in);
+                    System.out.println("Indtast id for at se Lectures til et af dine kurser: ");
+                    String code = input.nextLine();
+                    showLecturesStudent(code, currentUserId);
+                }
+                else {
+                    System.out.println("Ingen data");
                 }
             }
 
@@ -55,10 +64,6 @@ public class KursusView {
 
             }
         });
-        Scanner input = new Scanner(System.in);
-        System.out.println("Indtast id for at se Lectures til et af dine kurser: ");
-        String code = input.nextLine();
-        showLecturesStudent(code, currentUserId);
     }
 
     public void showLecturesStudent(String code, final int currentUserId){
