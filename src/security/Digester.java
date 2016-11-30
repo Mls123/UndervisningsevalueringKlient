@@ -8,17 +8,22 @@ import java.io.IOException;
 import java.security.MessageDigest;
 
 /**Denne klasse er genbrug af Serverens kode, da det er samme metoder og keys som skal bruges.
-*Klienten har mistet meget sikkerhed ved og have Hash og krypterings Key'ne sat ind i klienten på denne måde,
-*men er gjort på denne måde på grund af øvelsen i opgaven.
+ * Klienten har mistet meget sikkerhed ved og have Hash og krypterings Key'ne sat ind i klienten på denne måde,
+ * men er gjort på denne måde på grund af øvelsen i opgaven.
  */
 public class Digester {
 
+    /**
+     * her sættes salt og key til den værdi der er i config filen.
+     */
     private final static String SALT = ConfigLoader.HASH_SALT;
     private final static String KEY = ConfigLoader.ENCRYPT_KEY;
     private static MessageDigest digester;
 
 
-    /**Opretter objekt, som benyttes af MD5 (hashfunktion)*/
+    /**
+     * Opretter objekt, som benyttes af MD5 (hashfunktion)
+     */
     static {
         try {
             digester = MessageDigest.getInstance("MD5");
@@ -51,6 +56,7 @@ public class Digester {
 
         return Digester._hash(str);
     }
+
     //konventerer hashværdien til hexidecimaler
     private static String _hash(String str){
         digester.update(str.getBytes());
@@ -66,6 +72,11 @@ public class Digester {
         return hexString.toString();
     }
 
+    /**
+     * Krypterings metode der udfra keyen i config filen, kryptere værdien s.
+     * @param s
+     * @return
+     */
     public static String encrypt(String s) {
 
         String encrypted_string = s;
@@ -76,6 +87,11 @@ public class Digester {
         return encrypted_string;
     }
 
+    /**
+     * Dekrypterings metode der udfra keyen i config filen, dekryptere værdien s.
+     * @param s
+     * @return
+     */
     public static String decrypt(String s) {
 
         String decrypted_string = s;
@@ -94,7 +110,10 @@ public class Digester {
         return out;
     }
 
-    //Metode til at dekryptering
+    /**
+     * Metode til at dekryptering
+     * BASE64Decoder er en indbygget metode til dekryptering
+     */
     private static byte[] base64Decode(String s) {
         try {
             BASE64Decoder d = new BASE64Decoder();
@@ -102,7 +121,10 @@ public class Digester {
         } catch (IOException e) {throw new RuntimeException(e);}
     }
 
-    //metode til kryptering
+    /**
+     * Metode til at kryptering
+     * BASE64Encoder er en indbygget metode til kryptering
+     */
     private static String base64Encode(byte[] bytes) {
         BASE64Encoder enc = new BASE64Encoder();
         return enc.encode(bytes).replaceAll("\\s", "");

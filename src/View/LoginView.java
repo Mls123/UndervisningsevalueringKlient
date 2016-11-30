@@ -11,6 +11,11 @@ import java.util.Scanner;
 
 public class LoginView {
 
+    /**
+     * Denne metode er den første som bliver vist ved programmets opstart
+     * brugeren bliver spurgt efter mail og password - passwordet hashes og sendes til serveren for validering.
+     * er valideringen en succes bliver brugren sendt til den respektive menu.
+     */
     public void presentLogin() {
 
         System.out.println("Velkommen til Undervisningsevaluering!");
@@ -22,10 +27,16 @@ public class LoginView {
         System.out.println("Indtast password:");
         String password = input2.nextLine();
 
-        //hash password at login ("klient" side)
+        /**
+         *  hashing af password
+         */
+
         String securePW = Digester.hashWithSalt(password);
 
         UserService userService = new UserService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         userService.login(mail, securePW, new ResponseCallback<User>() {
             public void success(User data) {
 
@@ -57,7 +68,9 @@ public class LoginView {
                             "░░████████████░░░█████████████████");
 
 
-
+                    /**
+                     * Her valideres typen af brugeren og brugeren sendes til den respektive menu
+                     */
                     int currentUserId = data.getId();
 
                     if (data.getType().contentEquals("student")) {

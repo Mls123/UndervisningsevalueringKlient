@@ -1,5 +1,8 @@
 package sdk.Models;
 
+/**
+ * Dette er et DTO af user med dets attributter - Denne klasse bruges til og gemme objekter
+ */
 public class User  {
 
     private int id;

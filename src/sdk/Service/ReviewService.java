@@ -20,6 +20,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Service metoderne er inspireret af Jesper øvelseslærerens eksempler fra undervisningen
+ * kilde henvisning: https://github.com/Distribuerede-Systemer-2016/java-client/blob/master/src/sdk/services/BookService.java
+ */
 public class ReviewService {
 
     private Connection connection;
@@ -33,66 +37,116 @@ public class ReviewService {
         this.digester = new Digester();
     }
 
+    /**
+     * Henter alle reviews udfra et lectureId
+     * @param lectureId
+     * @param responseCallback
+     */
     public void getAll(int lectureId, final ResponseCallback<ArrayList<Review>> responseCallback){
 
+        /**
+         * kryptering
+         */
         String lectureIdEncrypt = Digester.encrypt(String.valueOf(lectureId));
 
-        //der er http også hvilken metode du skal bruge get fx.
+        /**
+         * URL specifikation
+         */
         HttpGet getRequest = new HttpGet(Connection.serverURL + "/review/" + lectureIdEncrypt);
 
-        //i javascript skal this altid defineres, her behøves den ikke
+        /**
+         * forbindelse skabes
+         */
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
 
-                //String jsonDecrypt = Digester.decrypt(json);
-                //Her bliver det modtagede json gemt i en arrayliste
+                /**
+                 * Her bliver det modtagede json gemt i en arrayliste
+                 * der dekrypteres
+                 */
                 ArrayList<Review> reviews = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Review>>(){}.getType());
                 responseCallback.success(reviews);
             }
 
             public void error(int status) {
+                System.out.println(status);
                 responseCallback.error(status);
             }
         });
 
     }
+
+    /**
+     * henter alle review udfra et userId
+     * @param currentUser
+     * @param responseCallback
+     */
     public void getAllFromUser(int currentUser, final ResponseCallback<ArrayList<Review>> responseCallback){
 
+        /**
+         * Kryptering
+         */
         String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUser));
 
-        //der er http også hvilken metode du skal bruge get fx.
+        /**
+         * URL defineres til endpointet
+         */
         HttpGet getRequest = new HttpGet(Connection.serverURL + "/reviews/" + currentUserIdEncrypt);
 
-        //i javascript skal this altid defineres, her behøves den ikke
+        /**
+         * Forbindelse skabes til server
+         */
         connection.execute(getRequest, new ResponseParser() {
             public void payload(String json) {
 
-                //String jsonDecrypt = Digester.decrypt(json);
-                //Her bliver det modtagede json gemt i en arrayliste
+                /**
+                 * Her bliver det modtagede json gemt i en arrayliste
+                 * Her dekrypteres
+                 */
                 ArrayList<Review> reviews = gson.fromJson(Digester.decrypt(json), new TypeToken<ArrayList<Review>>(){}.getType());
                 responseCallback.success(reviews);
             }
 
             public void error(int status) {
+                System.out.println(status);
                 responseCallback.error(status);
             }
         });
     }
 
+    /**
+     * Denne metode er til og oprette et nyt review.
+     * @param review
+     * @param responseCallback
+     */
     public void create(final Review review, final ResponseCallback<Boolean> responseCallback){
         try {
+            /**
+             * Her defineres URL som passer til endpointet
+             */
             HttpPost postRequest = new HttpPost(Connection.serverURL + "/student/review");
+
+            /**
+             * her defineres hvilken type data der hentes fra serveren - Json
+             */
             postRequest.addHeader("Content-Type", "application/json");
 
+            /**
+             * her krypteres objektet review der skal tilføjes, og laves til en stringEntity.
+             */
             StringEntity jsonReview = new StringEntity(Digester.encrypt(gson.toJson(review)));
             postRequest.setEntity(jsonReview);
 
+            /**
+             * Her laves en forbindelse til serveren
+             */
             this.connection.execute(postRequest, new ResponseParser() {
                 public void payload(String json) {
                     responseCallback.success(true);
                 }
 
                 public void error(int status) {
+                    System.out.println(status);
                     responseCallback.error(status);
                 }
             });
@@ -102,42 +156,89 @@ public class ReviewService {
         }
 
     }
+
+    /**
+     * Denne metode er til og slette er review udfra et reviewId
+     * @param reviewSletId
+     * @param responseCallback
+     */
     public void deleteReviewStudent(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
 
+        /**
+         * Kryptering
+         */
         String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
 
+        /**
+         * HEr defineres den URL som bruges til endpointet
+         */
         HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewSletIdEncrypt);
+
+        /**
+         * Definering af data type - json
+         */
         deleteRequest.addHeader("Content-Type", "application/json");
 
+        /**
+         * Forbindelse til server oprettes
+         */
         connection.execute(deleteRequest, new ResponseParser() {
             public void payload(String json) {
                 responseCallback.success(true);
             }
 
             public void error(int status) {
+                System.out.println(status);
                 responseCallback.error(status);
             }
         });
 
     }
+
+    /**
+     * Denne metode sletter et review for en teacher udfra et reviewId
+     * @param reviewSletId
+     * @param responseCallback
+     */
     public void deleteReviewTeacher(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
 
+        /**
+         * Kryptering
+         */
         String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
 
+        /**
+         * HEr defineres den URL som skal bruges for og skabe forbindelse til endpointet på serveren
+         */
         HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewSletIdEncrypt);
+
+        /**
+         * her defineres hvilken type contentet er - Json
+         */
         deleteRequest.addHeader("Content-Type", "application/json");
 
+        /**
+         * Her skabes en forbindelse til serveren
+         */
         connection.execute(deleteRequest, new ResponseParser() {
             public void payload(String json) {
                 responseCallback.success(true);
             }
 
             public void error(int status) {
+                System.out.println(status);
                 responseCallback.error(status);
             }
         });
 
     }
+
+    /**
+     * Denne metode er til og updatere review udfra et object af review, med de data som skal gemmes.
+     * denne metode bruges ikke.
+     * @param review
+     * @param responseCallback
+     */
     public void update(Review review, final ResponseCallback<Review> responseCallback){
         try {
             HttpPut updateRequest = new HttpPut(Connection.serverURL + "/review/" );

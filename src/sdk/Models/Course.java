@@ -1,11 +1,13 @@
 package sdk.Models;
 
+/**
+ * Dette er et DTO af course med dets attributter - Denne klasse bruges til og gemme objekter
+ */
 public class Course {
     private String code;
     private String displaytext;
     private int course_id;
     private String id;
-    // Study_id kan hentes ved Course.getId - arv
 
     public String getCode() {
         return code;

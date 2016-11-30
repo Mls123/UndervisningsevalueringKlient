@@ -6,9 +6,12 @@ import View.Menuer.TeacherMenu;
 
 public class Controller {
 
+    /**
+     * Her administreres de forskellige view eller menuer.
+     * @param currentUserId
+     */
     public void showStudentMenu(int currentUserId){
         StudentMenu studentView = new StudentMenu();
-        int currentLectureId = 0;
         studentView.studentMenu(currentUserId);
     }
     public void showTeacherMenu(int currentUserId){
@@ -16,7 +19,6 @@ public class Controller {
         teacherView.teacherMenu(currentUserId);
     }
     public void showLoginView(){
-
         LoginView loginView = new LoginView();
         loginView.presentLogin();
     }

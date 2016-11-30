@@ -1,7 +1,9 @@
 package sdk.Models;
 
+/**
+ * Dette er et DTO af review med dets attributter - Denne klasse bruges til og gemme objekter
+ */
 public class Review {
-    //burde nedarves af lecture
 
     private int id;
     private int userId;

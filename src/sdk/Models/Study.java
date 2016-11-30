@@ -1,5 +1,10 @@
 package sdk.Models;
 
+/**
+ * Dette er et DTO af study med dets attributter - Denne klasse bruges til og gemme objekter
+ * Denne metode burde være super klassen af DTOerne.
+ * Dette er dog ikke muligt på grund af opbygningen af databasen.
+ */
 public class Study {
     private int id;
     private String name;

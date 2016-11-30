@@ -12,6 +12,10 @@ import security.Digester;
 
 import java.util.ArrayList;
 
+/**
+ * Service metoderne er inspireret af Jesper øvelseslærerens eksempler fra undervisningen
+ * kilde henvisning: https://github.com/Distribuerede-Systemer-2016/java-client/blob/master/src/sdk/services/BookService.java
+ */
 public class StudyService {
     private Connection connection;
     private Gson gson;
@@ -24,6 +28,11 @@ public class StudyService {
         this.digester = new Digester();
     }
 
+    /**
+     * Denne metode er til og hente alle studies
+     * på nuværende tidspunkt bruges denne metode ikke.
+     * @param responseCallback
+     */
     public void getAll(final ResponseCallback<ArrayList<Study>> responseCallback){
 
         String shortname = "BIVKU";

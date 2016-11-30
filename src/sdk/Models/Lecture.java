@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Dette er et DTO af lecture med dets attributter - Denne klasse bruges til og gemme objekter
+ */
 public class Lecture {
     private int id;
     private int courseId;

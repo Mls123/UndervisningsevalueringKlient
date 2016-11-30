@@ -17,9 +17,17 @@ import java.util.Scanner;
 
 public class ReviewView {
 
+    /**
+     * Denne metode viser reviews udfra et userId - det vil sige at metoden viser de review som brugeren der er logget ind har skrevet.
+     * @param currentUserId
+     * @param currentLectureId
+     */
     public void showRatingsStudent(final int currentUserId, final int currentLectureId){
 
         ReviewService reviewService = new ReviewService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
@@ -36,9 +44,18 @@ public class ReviewView {
         ReviewMenu reviewMenu = new ReviewMenu();
         reviewMenu.reviewMenuStudent(currentUserId, currentLectureId);
     }
+
+    /**
+     *
+     * @param currentUserId
+     * @param currentLectureId
+     */
     public void showRatingsTeacher(final int currentUserId, final int currentLectureId){
 
         ReviewService reviewService = new ReviewService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
@@ -57,9 +74,16 @@ public class ReviewView {
         reviewMenu.reviewMenuTeacher(currentUserId);
     }
 
+    /**
+     *
+     * @param currentUserId
+     */
     public void showRatingsFromUser(int currentUserId){
 
         ReviewService reviewService = new ReviewService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         reviewService.getAllFromUser(currentUserId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review reviews : data) {
@@ -75,7 +99,13 @@ public class ReviewView {
             }
         });
     }
-        public void createReviewStudent(final int currentUserId, final int currentLectureId) {
+
+    /**
+     *
+     * @param currentUserId
+     * @param currentLectureId
+     */
+    public void createReviewStudent(final int currentUserId, final int currentLectureId) {
 
             //if ingen reviews - skriv det pænere.
 
@@ -96,6 +126,9 @@ public class ReviewView {
             review.setUserId(currentUserId);
             review.setLectureId(currentLectureId);
 
+            /**
+            * Her kaldes på service metoden som laver forbindelse til databasen
+            */
             reviewService.create(review, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er oprettet!");
@@ -109,7 +142,11 @@ public class ReviewView {
             });
         }
 
-        public void deleteReviewStudent(final int currentUserId) {
+    /**
+     *
+     * @param currentUserId
+     */
+    public void deleteReviewStudent(final int currentUserId) {
 
             if (currentUserId == 0) {
                 System.out.println("Du skal logge ind for og slette et review!");
@@ -123,6 +160,9 @@ public class ReviewView {
                 String reviewSletId = String.valueOf(reviewSlet);
 
                 ReviewService reviewService = new ReviewService();
+                /**
+                 * Her kaldes på service metoden som laver forbindelse til databasen
+                 */
                 reviewService.deleteReviewStudent(reviewSletId, new ResponseCallback<Boolean>() {
                     public void success(Boolean data) {
                         System.out.println("Reviewet er slettet.");
@@ -137,6 +177,11 @@ public class ReviewView {
 
             }
         }
+
+    /**
+     *
+     * @param currentUserId
+     */
     public void deleteReviewTeacher(final int currentUserId) {
 
         if (currentUserId == 0) {
@@ -151,6 +196,9 @@ public class ReviewView {
             String reviewSletId = String.valueOf(reviewSlet);
 
             ReviewService reviewService = new ReviewService();
+            /**
+             * Her kaldes på service metoden som laver forbindelse til databasen
+             */
             reviewService.deleteReviewTeacher(reviewSletId, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
@@ -166,6 +214,9 @@ public class ReviewView {
         }
     }
 
+    /**
+     * Denne meotde er til updatering af et review, der er en service metode til - ingen bliver brugt. 
+     */
         public void update(){
             ReviewService reviewService = new ReviewService();
             Review reviewUpdate = new Review();

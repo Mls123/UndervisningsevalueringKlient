@@ -19,10 +19,10 @@ import java.util.Set;
 public class ConfigLoader {
 
     /**
-    *Static variable indlæses alle som String, fordi de hentes fra config.Json.
-    *OBS! ServerPort skal anvendes som en int, og dette løses med en
-    *Integer.parseInt(), der hvor ServerPorten skal anvendes.
-     */
+    * Static variable indlæses alle som String, fordi de hentes fra config.Json.
+    * OBS! ServerPort skal anvendes som en int, og dette løses med en
+    * Integer.parseInt(), der hvor ServerPorten skal anvendes.
+    */
 
     public static String HASH_SALT;
     public static String ENCRYPT_KEY;
@@ -31,8 +31,9 @@ public class ConfigLoader {
     public static String DEBUG;
     public static String ENCRYPTION;
 
-    /** Der oprettes en static final kombineret med SINGLETON(design mønster), som har til formål,
-    * at kontrollere intialiseringen af klassen for derved at sørge for at objektet ikke kan instansieres mere end en gang
+    /**
+     * Der oprettes en static final kombineret med SINGLETON(design mønster), som har til formål,
+     * at kontrollere intialiseringen af klassen for derved at sørge for at objektet ikke kan instansieres mere end en gang
      */
 
     private static final ConfigLoader SINGLETON = new ConfigLoader();

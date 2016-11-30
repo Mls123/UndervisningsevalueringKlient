@@ -13,9 +13,17 @@ import java.util.Scanner;
 
 public class KursusView {
 
+    /**
+     *
+     * @param shortname
+     * @return
+     */
     public String showStudies(String shortname){
 
         StudyService studyService = new StudyService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         studyService.getAll(new ResponseCallback<ArrayList<Study>>() {
             public void success(ArrayList<Study> data) {
                 for (Study study : data) {
@@ -39,8 +47,15 @@ public class KursusView {
 
     }
 
+    /**
+     *
+     * @param currentUserId
+     */
     public void showCoursesStudent(final int currentUserId) {
         CourseService courseService = new CourseService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
                     for (Course course : data) {
@@ -60,9 +75,16 @@ public class KursusView {
         showLecturesStudent(code, currentUserId);
     }
 
+    /**
+     *
+     * @param code
+     * @param currentUserId
+     */
     public void showLecturesStudent(String code, final int currentUserId){
         LectureService lectureService = new LectureService();
-
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
                 for (Lecture lecture : data) {
@@ -85,8 +107,15 @@ public class KursusView {
         reviewView.showRatingsStudent(currentUserId, currentLectureId);
     }
 
+    /**
+     *
+     * @param currentUserId
+     */
     public void showCoursesTeacher(int currentUserId){
         CourseService courseService = new CourseService();
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
                 for (Course course : data) {
@@ -107,9 +136,16 @@ public class KursusView {
         showLecturesTeacher(code, currentUserId);
     }
 
+    /**
+     *
+     * @param code
+     * @param currentUserId
+     */
     public void showLecturesTeacher(String code, final int currentUserId){
         LectureService lectureService = new LectureService();
-
+        /**
+         * Her kaldes på service metoden som laver forbindelse til databasen
+         */
         lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
                 for (Lecture lecture : data) {
