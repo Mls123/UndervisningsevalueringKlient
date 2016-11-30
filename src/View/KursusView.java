@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class KursusView {
 
     /**
-     *
+     * denne metode viser study - er ikke brugt.
      * @param shortname
      * @return
      */
@@ -48,7 +48,7 @@ public class KursusView {
     }
 
     /**
-     *
+     * denne metode viser kurser udfra et userId - denne metode hiver fat i et student endpoint
      * @param currentUserId
      */
     public void showCoursesStudent(final int currentUserId) {
@@ -76,7 +76,8 @@ public class KursusView {
     }
 
     /**
-     *
+     * denne metode er til og vise lectures udfra et code input
+     * denne metode er for studerende og hiver fat i et student endpoint
      * @param code
      * @param currentUserId
      */
@@ -108,7 +109,7 @@ public class KursusView {
     }
 
     /**
-     *
+     * denne metode viser kurser udfra et userId - denne metode hiver fat i et teacher endpoint
      * @param currentUserId
      */
     public void showCoursesTeacher(int currentUserId){
@@ -137,7 +138,8 @@ public class KursusView {
     }
 
     /**
-     *
+     * denne metode er til og vise lectures udfra et code input
+     * denne metode er for teachers og hiver fat i et teacher endpoint
      * @param code
      * @param currentUserId
      */

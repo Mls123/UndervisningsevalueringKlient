@@ -46,7 +46,7 @@ public class ReviewView {
     }
 
     /**
-     *
+     * denne metode er til og vise en teacher deres ratings. udfra deres id.
      * @param currentUserId
      * @param currentLectureId
      */
@@ -75,7 +75,7 @@ public class ReviewView {
     }
 
     /**
-     *
+     * denne metode er til og vise den studerende deres ratings. udfra deres id.
      * @param currentUserId
      */
     public void showRatingsFromUser(int currentUserId){
@@ -101,7 +101,8 @@ public class ReviewView {
     }
 
     /**
-     *
+     * denne metode tager input og gemmer det i et review DTO og sender det til serveren som så opretter et review med de data.
+     * dette er for en studerende - der hives derfor fat i et student endpoint
      * @param currentUserId
      * @param currentLectureId
      */
@@ -143,7 +144,9 @@ public class ReviewView {
         }
 
     /**
-     *
+     * her bliver brugeren spurgt efter et id for det review der skal slettes (brugeren kan kun slette et af sine egne reviw)
+     * Reviewvet vil derefter blive slettet
+     * dette er for en student - der hives fat i et student endpoint
      * @param currentUserId
      */
     public void deleteReviewStudent(final int currentUserId) {
@@ -179,7 +182,9 @@ public class ReviewView {
         }
 
     /**
-     *
+     * her bliver brugeren spurgt efter et id for det review der skal slettes (brugeren kan kun slette et af sine egne reviw)
+     * Reviewvet vil derefter blive slettet
+     * dette er for en teacher - der hives fat i et teacher endpoint
      * @param currentUserId
      */
     public void deleteReviewTeacher(final int currentUserId) {
@@ -215,7 +220,7 @@ public class ReviewView {
     }
 
     /**
-     * Denne meotde er til updatering af et review, der er en service metode til - ingen bliver brugt. 
+     * Denne meotde er til updatering af et review, der er en service metode til - ingen bliver brugt.
      */
         public void update(){
             ReviewService reviewService = new ReviewService();
