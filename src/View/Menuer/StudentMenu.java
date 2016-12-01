@@ -19,8 +19,8 @@ public class StudentMenu {
         System.out.println("(4) - Shut down");
 
         try {
-            Scanner inputReader = new Scanner(System.in);
-            int choice = inputReader.nextInt();
+            Scanner input = new Scanner(System.in);
+            int choice = input.nextInt();
 
             switch (choice) {
 

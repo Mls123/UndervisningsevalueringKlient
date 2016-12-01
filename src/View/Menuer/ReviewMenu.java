@@ -18,8 +18,8 @@ public class ReviewMenu {
         System.out.println("(3) - Shut down");
 
         try{
-        Scanner inputReader = new Scanner(System.in);
-        int choice = inputReader.nextInt();
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();
 
         switch (choice) {
 
@@ -53,8 +53,8 @@ public class ReviewMenu {
         System.out.println("(3) - Shut down");
 
         try{
-        Scanner inputReader = new Scanner(System.in);
-        int choice = inputReader.nextInt();
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();
 
         switch (choice) {
 
@@ -89,8 +89,8 @@ public class ReviewMenu {
         System.out.println("(3) - Shut down");
 
         try{
-        Scanner inputReader = new Scanner(System.in);
-        int choice = inputReader.nextInt();
+        Scanner input = new Scanner(System.in);
+        int choice = input.nextInt();
 
         switch (choice) {
 

@@ -19,18 +19,17 @@ public class LoginView {
     public void presentLogin() {
 
         System.out.println("Velkommen til Undervisningsevaluering!");
-        Scanner input1 = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Indtast Cbs mail:");
-        String mail = input1.nextLine();
+        String mail = input.nextLine();
 
-        Scanner input2 = new Scanner(System.in);
+        Scanner input1 = new Scanner(System.in);
         System.out.println("Indtast password:");
-        String password = input2.nextLine();
+        String password = input1.nextLine();
 
         /**
          *  hashing af password
          */
-
         String securePW = Digester.hashWithSalt(password);
 
         UserService userService = new UserService();
@@ -97,7 +96,7 @@ public class LoginView {
                                 "██████▌▄▌▄▐▐▌███▌▀▀██▀▀\n" +
                                 "████▄█▌▄▌▄▐▐▌▀███▄▄█▌\n" +
                                 "▄▄▄▄▄██████████████▀");
-                System.out.println("Fejl: " + status);
+                System.out.println(status);
                 presentLogin();
             }
         });

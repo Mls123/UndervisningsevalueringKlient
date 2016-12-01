@@ -24,7 +24,7 @@ public class KursusView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        studyService.getAll(new ResponseCallback<ArrayList<Study>>() {
+        studyService.getAllStudies(new ResponseCallback<ArrayList<Study>>() {
             public void success(ArrayList<Study> data) {
                 for (Study study : data) {
                     System.out.println("\n"+"Id:        " + study.getId() + "\n");
@@ -44,7 +44,6 @@ public class KursusView {
         shortname = input.nextLine();
 
         return shortname;
-
     }
 
     /**
@@ -56,7 +55,7 @@ public class KursusView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
+        courseService.getAllCourses(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
                     for (Course course : data) {
                         System.out.println("\n" + "id: " + course.getId());
@@ -86,7 +85,7 @@ public class KursusView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
+        lectureService.getAllLectures(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
                 for (Lecture lecture : data) {
                     System.out.println("\n" + "id:          " + lecture.getId());
@@ -117,7 +116,7 @@ public class KursusView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
+        courseService.getAllCourses(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
                 for (Course course : data) {
                     System.out.println("\n"+"id: " + course.getId());
@@ -148,7 +147,7 @@ public class KursusView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
+        lectureService.getAllLectures(code, new ResponseCallback<ArrayList<Lecture>>() {
             public void success(ArrayList<Lecture> data) {
                 for (Lecture lecture : data) {
                     System.out.println("\n" + "id:          " + lecture.getId());

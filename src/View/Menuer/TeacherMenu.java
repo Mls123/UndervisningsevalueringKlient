@@ -15,8 +15,8 @@ public class TeacherMenu {
         System.out.println("(2) - Deltagelse og statistik");
         System.out.println("(3) - Shut down");
         try {
-            Scanner inputReader = new Scanner(System.in);
-            int choice = inputReader.nextInt();
+            Scanner input = new Scanner(System.in);
+            int choice = input.nextInt();
 
             switch (choice) {
 

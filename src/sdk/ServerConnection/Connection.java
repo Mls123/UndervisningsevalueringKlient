@@ -26,7 +26,7 @@ public class Connection {
      * Dette er en constructor som kører en metode ved kaldet på httpClient
      */
     public Connection(){
-            this.httpClient = HttpClients.createDefault();
+        this.httpClient = HttpClients.createDefault();
 
     }
 

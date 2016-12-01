@@ -28,7 +28,7 @@ public class ReviewView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
+        reviewService.getAllReviewFromLecttureId(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
                     System.out.println("\n"+"id:        " + review.getId());
@@ -56,7 +56,7 @@ public class ReviewView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
+        reviewService.getAllReviewFromLecttureId(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
                     System.out.println("\n"+"id:        " + review.getId());
@@ -84,7 +84,7 @@ public class ReviewView {
         /**
          * Her kaldes på service metoden som laver forbindelse til databasen
          */
-        reviewService.getAllFromUser(currentUserId, new ResponseCallback<ArrayList<Review>>() {
+        reviewService.getAllReviewFromUser(currentUserId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review reviews : data) {
                     System.out.println("\n"+"id:        " + reviews.getId());
@@ -113,12 +113,12 @@ public class ReviewView {
             System.out.println("Oprettelse af review: ");
 
             System.out.println("Rating (fra 1 til 5, hvor 5 er bedst): ");
-            Scanner inputReader = new Scanner(System.in);
-            int rating = inputReader.nextInt();
+            Scanner input = new Scanner(System.in);
+            int rating = input.nextInt();
 
             System.out.println("Kommentar: ");
-            Scanner inputReader1 = new Scanner(System.in);
-            final String comment = inputReader1.nextLine();
+            Scanner input1 = new Scanner(System.in);
+            final String comment = input1.nextLine();
 
             ReviewService reviewService = new ReviewService();
             Review review = new Review();
@@ -130,7 +130,7 @@ public class ReviewView {
             /**
             * Her kaldes på service metoden som laver forbindelse til databasen
             */
-            reviewService.create(review, new ResponseCallback<Boolean>() {
+            reviewService.createReview(review, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er oprettet!");
                     Controller controller = new Controller();
@@ -157,10 +157,10 @@ public class ReviewView {
             } else {
                 System.out.println("indtast review id, for den du vil slette: ");
 
-                Scanner inputReader = new Scanner(System.in);
-                int reviewSlet = inputReader.nextInt();
+                Scanner input = new Scanner(System.in);
+                int reviewId = input.nextInt();
 
-                String reviewSletId = String.valueOf(reviewSlet);
+                String reviewSletId = String.valueOf(reviewId);
 
                 ReviewService reviewService = new ReviewService();
                 /**
@@ -195,10 +195,10 @@ public class ReviewView {
         } else {
             System.out.println("indtast review id, for den du vil slette: ");
 
-            Scanner inputReader = new Scanner(System.in);
-            int reviewSlet = inputReader.nextInt();
+            Scanner input = new Scanner(System.in);
+            int reviewId = input.nextInt();
 
-            String reviewSletId = String.valueOf(reviewSlet);
+            String reviewSletId = String.valueOf(reviewId);
 
             ReviewService reviewService = new ReviewService();
             /**

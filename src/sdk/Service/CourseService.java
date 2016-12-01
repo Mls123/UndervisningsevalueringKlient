@@ -31,7 +31,7 @@ public class CourseService {
      * ArrayList<course> = T, nu er pladsen T taget, derfor er den ikke en placeholder mere.
      * denne metode henter alle kurser.
      */
-    public void getAll(int currentUserId, final ResponseCallback<ArrayList<Course>> responseCallback){
+    public void getAllCourses(int currentUserId, final ResponseCallback<ArrayList<Course>> responseCallback){
 
         /**
          * Denne metode kryptere det data som sendes til serveren

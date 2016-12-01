@@ -33,7 +33,7 @@ public class LectureService {
     /**
      * denne metode henter alle lectures.
      */
-    public void getAll(String code, final ResponseCallback<ArrayList<Lecture>> responseCallback){
+    public void getAllLectures(String code, final ResponseCallback<ArrayList<Lecture>> responseCallback){
 
         /**
          * Kryptering

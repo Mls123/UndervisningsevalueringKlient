@@ -30,7 +30,6 @@ public class ReviewService {
     private Gson gson;
     private Digester digester;
 
-    //en constructor, når der initieres en bookservice kaldes denne også, og her laves en forbindelse.
     public ReviewService(){
         this.connection = new Connection();
         this.gson = new Gson();
@@ -42,7 +41,7 @@ public class ReviewService {
      * @param lectureId
      * @param responseCallback
      */
-    public void getAll(int lectureId, final ResponseCallback<ArrayList<Review>> responseCallback){
+    public void getAllReviewFromLecttureId(int lectureId, final ResponseCallback<ArrayList<Review>> responseCallback){
 
         /**
          * kryptering
@@ -78,15 +77,15 @@ public class ReviewService {
 
     /**
      * henter alle review udfra et userId
-     * @param currentUser
+     * @param currentUserId
      * @param responseCallback
      */
-    public void getAllFromUser(int currentUser, final ResponseCallback<ArrayList<Review>> responseCallback){
+    public void getAllReviewFromUser(int currentUserId, final ResponseCallback<ArrayList<Review>> responseCallback){
 
         /**
          * Kryptering
          */
-        String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUser));
+        String currentUserIdEncrypt = Digester.encrypt(String.valueOf(currentUserId));
 
         /**
          * URL defineres til endpointet
@@ -119,7 +118,7 @@ public class ReviewService {
      * @param review
      * @param responseCallback
      */
-    public void create(final Review review, final ResponseCallback<Boolean> responseCallback){
+    public void createReview(final Review review, final ResponseCallback<Boolean> responseCallback){
         try {
             /**
              * Her defineres URL som passer til endpointet
@@ -159,20 +158,20 @@ public class ReviewService {
 
     /**
      * Denne metode er til og slette er review udfra et reviewId
-     * @param reviewSletId
+     * @param reviewId
      * @param responseCallback
      */
-    public void deleteReviewStudent(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
+    public void deleteReviewStudent(String reviewId, final ResponseCallback<Boolean> responseCallback){
 
         /**
          * Kryptering
          */
-        String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
+        String reviewIdEncrypt = Digester.encrypt(reviewId);
 
         /**
          * HEr defineres den URL som bruges til endpointet
          */
-        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewSletIdEncrypt);
+        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/student/review/" + reviewIdEncrypt);
 
         /**
          * Definering af data type - json
@@ -197,20 +196,20 @@ public class ReviewService {
 
     /**
      * Denne metode sletter et review for en teacher udfra et reviewId
-     * @param reviewSletId
+     * @param reviewId
      * @param responseCallback
      */
-    public void deleteReviewTeacher(String reviewSletId, final ResponseCallback<Boolean> responseCallback){
+    public void deleteReviewTeacher(String reviewId, final ResponseCallback<Boolean> responseCallback){
 
         /**
          * Kryptering
          */
-        String reviewSletIdEncrypt = Digester.encrypt(reviewSletId);
+        String reviewIdEncrypt = Digester.encrypt(reviewId);
 
         /**
-         * HEr defineres den URL som skal bruges for og skabe forbindelse til endpointet på serveren
+         * Her defineres den URL som skal bruges for og skabe forbindelse til endpointet på serveren
          */
-        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewSletIdEncrypt);
+        HttpDelete deleteRequest = new HttpDelete(Connection.serverURL + "/teacher/review/" + reviewIdEncrypt);
 
         /**
          * her defineres hvilken type contentet er - Json

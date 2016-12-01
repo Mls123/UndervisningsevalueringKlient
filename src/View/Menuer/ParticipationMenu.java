@@ -20,10 +20,11 @@ public class ParticipationMenu {
 
     public void participationMenu(int currentUserId){
         System.out.println("(1) - Deltagelse for en lecture ");
-        System.out.println("(2) - Antal deltagere tildelt kursus ");
+        System.out.println("(2) - Deltagere tildelt kursus ");
         System.out.println("(3) - Samlet rating for et kursus ");
         //System.out.println("(4) - Samlet rating for en lecture ");
-        System.out.println("(5) - Gå tilbage til main menu");
+        System.out.println("(4) - Gå til main menu");
+        System.out.println("(5) - Stop programmet");
 
         try {
         Scanner inputReader = new Scanner(System.in);
@@ -54,15 +55,12 @@ public class ParticipationMenu {
 
                     break;
                 case 4:
-                    StatisticView statisticView2 = new StatisticView();
-                    statisticView2.calculateAverageRatingOnLecture(currentUserId);
-
-                    participationMenu(currentUserId);
+                    Controller controller3 = new Controller();
+                    controller3.showTeacherMenu(currentUserId);
 
                     break;
                 case 5:
-                    Controller controller3 = new Controller();
-                    controller3.showTeacherMenu(currentUserId);
+                    System.exit(0);
                     break;
 
                 default:
@@ -77,7 +75,7 @@ public class ParticipationMenu {
 
     public void showCourses(int currentUserId){
         CourseService courseService = new CourseService();
-        courseService.getAll(currentUserId, new ResponseCallback<ArrayList<Course>>() {
+        courseService.getAllCourses(currentUserId, new ResponseCallback<ArrayList<Course>>() {
             public void success(ArrayList<Course> data) {
                 for (Course course : data) {
                     System.out.println("\nid: " + course.getId());
@@ -101,7 +99,7 @@ public class ParticipationMenu {
         String code = input.nextLine();
 
             LectureService lectureService = new LectureService();
-            lectureService.getAll(code, new ResponseCallback<ArrayList<Lecture>>() {
+            lectureService.getAllLectures(code, new ResponseCallback<ArrayList<Lecture>>() {
                 public void success(ArrayList<Lecture> data) {
                     if (data.size() == 0) {
                         System.out.println("Der er ingen lectures til dette kursus");
@@ -133,15 +131,14 @@ public class ParticipationMenu {
     public void showRatings(int currentLectureId, int currentUserId){
 
         ReviewService reviewService = new ReviewService();
-        reviewService.getAll(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
+        reviewService.getAllReviewFromLecttureId(currentLectureId, new ResponseCallback<ArrayList<Review>>() {
             public void success(ArrayList<Review> data) {
                 for (Review review : data) {
-                    if (data.size() == 0){
+                    /*if (data.size() == 0){
                         System.out.println("Der er ingen der har deltaget");
                     } else{
-                        System.out.println("\nDenne deltagelses tælling er på baggrund af besvarelser givet af en forelæsning eller lecture \n");
+                        System.out.println("\nDenne deltagelses tælling er på baggrund af besvarelser givet af en forelæsning eller lecture \n");*/
                         System.out.println("Deltagelse: " + data.size() + "\n");
-                    }
                 }
             }
 

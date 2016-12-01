@@ -33,7 +33,7 @@ public class StudyService {
      * på nuværende tidspunkt bruges denne metode ikke.
      * @param responseCallback
      */
-    public void getAll(final ResponseCallback<ArrayList<Study>> responseCallback){
+    public void getAllStudies(final ResponseCallback<ArrayList<Study>> responseCallback){
 
         String shortname = "BIVKU";
         String shortnameEncrypt = Digester.encrypt(shortname);
