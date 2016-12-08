@@ -198,13 +198,11 @@ public class ReviewView {
             Scanner input = new Scanner(System.in);
             int reviewId = input.nextInt();
 
-            String reviewSletId = String.valueOf(reviewId);
-
             ReviewService reviewService = new ReviewService();
             /**
              * Her kaldes på service metoden som laver forbindelse til databasen
              */
-            reviewService.deleteReviewTeacher(reviewSletId, new ResponseCallback<Boolean>() {
+            reviewService.deleteReviewTeacher(reviewId, new ResponseCallback<Boolean>() {
                 public void success(Boolean data) {
                     System.out.println("Reviewet er slettet.");
                     Controller controller = new Controller();

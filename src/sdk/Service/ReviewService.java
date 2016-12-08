@@ -199,12 +199,12 @@ public class ReviewService {
      * @param reviewId
      * @param responseCallback
      */
-    public void deleteReviewTeacher(String reviewId, final ResponseCallback<Boolean> responseCallback){
+    public void deleteReviewTeacher(int reviewId, final ResponseCallback<Boolean> responseCallback){
 
         /**
          * Kryptering
          */
-        String reviewIdEncrypt = Digester.encrypt(reviewId);
+        String reviewIdEncrypt = Digester.encrypt(String.valueOf(reviewId));
 
         /**
          * Her defineres den URL som skal bruges for og skabe forbindelse til endpointet på serveren
